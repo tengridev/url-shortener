@@ -1,5 +1,11 @@
+import Header from '../components/Header'
+
 const Home = () => {
-  return <div>Merhaba Dünya!</div>
+  return (
+    <>
+      <Header />
+    </>
+  )
 }
 
 export default Home
