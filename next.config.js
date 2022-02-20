@@ -1,8 +1,14 @@
 /** @type {import('next').NextConfig} */
 const { parsed: localEnv } = require('dotenv').config()
 const nextTranslate = require('next-translate')
+const withPWA = require('next-pwa')
 
 const nextConfig = {
+  pwa: {
+    dest: 'public',
+    register: true,
+    skipWaiting: true
+  },
   serverRuntimeConfig: {
     SERVICES: localEnv && localEnv.SERVICES,
     REDIRECT: localEnv && localEnv.REDIRECT,
@@ -10,10 +16,11 @@ const nextConfig = {
   },
   publicRuntimeConfig: {
     SITE_URL: localEnv && localEnv.SITE_URL,
+    TWITTER: localEnv && localEnv.TWITTER,
     GOOGLE_ADSENSE_ID: localEnv && localEnv.GOOGLE_ADSENSE_ID,
     GOOGLE_ANALYTICS_ID: localEnv && localEnv.GOOGLE_ANALYTICS_ID
   },
   ...nextTranslate()
 }
 
-module.exports = nextConfig
+module.exports = withPWA(nextConfig)

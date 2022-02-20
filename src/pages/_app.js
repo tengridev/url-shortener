@@ -45,6 +45,55 @@ function App({ Component, pageProps }) {
           {
             name: 'viewport',
             content: 'width=device-width, initial-scale=1.0, viewport-fit=cover'
+          },
+          {
+            name: 'application-name',
+            content: t('application-name')
+          },
+          {
+            name: 'apple-mobile-web-app-title',
+            content: t('application-name')
+          }
+        ]}
+        additionalLinkTags={[
+          {
+            rel: 'shortcut icon',
+            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon.png`
+          },
+          {
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '16x16',
+            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon-16-16.png`
+          },
+          {
+            rel: 'icon',
+            type: 'image/png',
+            sizes: '32x32',
+            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon-32-32.png`
+          },
+          {
+            rel: 'apple-touch-icon',
+            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon.png`
+          },
+          {
+            rel: 'apple-touch-icon',
+            sizes: '152x152',
+            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon-152-152.png`
+          },
+          {
+            rel: 'apple-touch-icon',
+            sizes: '167x167',
+            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon-167-167.png`
+          },
+          {
+            rel: 'apple-touch-icon',
+            sizes: '180x180',
+            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon-180-180.png`
+          },
+          {
+            rel: 'manifest',
+            href: `${publicRuntimeConfig.SITE_URL}/manifest.json`
           }
         ]}
         languageAlternates={languages}
@@ -64,6 +113,11 @@ function App({ Component, pageProps }) {
             }
           ],
           site_name: t('site-title')
+        }}
+        twitter={{
+          handle: `@${publicRuntimeConfig.TWITTER}`,
+          site: `@${publicRuntimeConfig.TWITTER}`,
+          cardType: 'summary_large_image'
         }}
       />
       {publicRuntimeConfig.GOOGLE_ANALYTICS_ID && (
