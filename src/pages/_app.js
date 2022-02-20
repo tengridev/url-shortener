@@ -1,10 +1,14 @@
 import { useRouter } from 'next/router'
 import { ThemeProvider } from 'next-themes'
 import { NextSeo } from 'next-seo'
+import { config } from '@fortawesome/fontawesome-svg-core'
 import Script from 'next/script'
 import useTranslation from 'next-translate/useTranslation'
 import getConfig from 'next/config'
+import Layout from '../components/Layout'
+import '@fortawesome/fontawesome-svg-core/styles.css'
 import '../styles/globals.css'
+config.autoAddCss = false
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -154,7 +158,9 @@ function App({ Component, pageProps }) {
         />
       )}
       <ThemeProvider attribute="class">
-        <Component {...pageProps} />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </ThemeProvider>
     </>
   )

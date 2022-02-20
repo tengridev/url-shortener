@@ -1,11 +1,5 @@
-import Header from '../components/Header'
-
 const Home = () => {
-  return (
-    <>
-      <Header />
-    </>
-  )
+  return <>Ana Sayfa</>
 }
 
 export default Home

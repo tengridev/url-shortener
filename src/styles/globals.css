@@ -15,7 +15,7 @@ body {
   @apply h-[70px] py-2 grid grid-cols-12 border-b border-neutral-200 bg-neutral-100 dark:border-zinc-800 dark:bg-zinc-900;
 
   .logo {
-    @apply h-full col-start-2 col-span-2;
+    @apply h-full col-start-2 col-span-2 flex items-center;
   }
 
   .nav {
@@ -25,8 +25,12 @@ body {
       @apply h-full relative z-50 gap-x-5 flex justify-end items-center md:hidden;
     }
 
+    &-menu {
+      @apply flex justify-center items-center;
+    }
+
     &-theme {
-      @apply p-1 rounded-full border border-neutral-200 bg-neutral-200/25 dark:border-zinc-800 dark:bg-zinc-800/25;
+      @apply flex justify-center items-center p-[6px] rounded-full border border-neutral-200 bg-neutral-200/25 dark:border-zinc-800 dark:bg-zinc-800/25;
     }
 
     .navbar-nav {
@@ -36,7 +40,7 @@ body {
         @apply flex;
 
         & + .nav-action {
-          @apply h-auto fixed top-[23px] right-[23px] z-50;
+          @apply h-auto fixed top-[27px] right-[27px] z-50;
         }
       }
 
