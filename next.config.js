@@ -1,6 +1,18 @@
 /** @type {import('next').NextConfig} */
+const { parsed: localEnv } = require('dotenv').config()
+const nextTranslate = require('next-translate')
+
 const nextConfig = {
-  reactStrictMode: true,
+  serverRuntimeConfig: {
+    SERVICES: localEnv && localEnv.SERVICES,
+    REDIRECT: localEnv && localEnv.REDIRECT,
+    SIGNATURE_KEY: localEnv && localEnv.SIGNATURE_KEY
+  },
+  publicRuntimeConfig: {
+    GOOGLE_ADSENSE_ID: localEnv && localEnv.GOOGLE_ADSENSE_ID,
+    GOOGLE_ANALYTICS_ID: localEnv && localEnv.GOOGLE_ANALYTICS_ID
+  },
+  ...nextTranslate()
 }
 
 module.exports = nextConfig

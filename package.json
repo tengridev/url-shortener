@@ -1,7 +1,24 @@
 {
   "name": "url-shortener-app",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Next.JS ile hazırlanmış basit, sade ve kullanışlı URL kısaltma uygulaması",
+  "author": "RegEx Art <regexart@gmail.com>",
+  "license": "MIT",
   "private": true,
+  "keywords": [
+    "next.js",
+    "url",
+    "shortener",
+    "app"
+  ],
+  "homepage": "https://github.com/regexart/url-shortener-app#readme",
+  "bugs": {
+    "url": "https://github.com/regexart/url-shortener-app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/regexart/url-shortener-app.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,12 +26,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "dotenv": "^16.0.0",
     "next": "12.1.0",
+    "next-seo": "^5.1.0",
+    "next-themes": "^0.0.15",
+    "next-translate": "^1.3.4",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "autoprefixer": "^10.4.2",
     "eslint": "8.9.0",
-    "eslint-config-next": "12.1.0"
+    "eslint-config-next": "12.1.0",
+    "postcss": "^8.4.6",
+    "tailwindcss": "^3.0.23"
   }
 }

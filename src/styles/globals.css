@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  @apply focus:outline-none focus:ring-0 placeholder:text-neutral-800 dark:placeholder:text-zinc-300 !important;
+}
+
+body {
+  @apply font-poppins font-light text-neutral-800 bg-neutral-100 dark:text-zinc-300 dark:bg-zinc-900;
+}
+
+.header {
+  @apply h-[70px] py-2 grid grid-cols-12 border-b border-neutral-200 bg-neutral-100 dark:border-zinc-800 dark:bg-zinc-900;
+
+  .logo {
+    @apply h-full col-start-2 col-span-2;
+  }
+
+  .nav {
+    @apply h-full col-end-12 md:col-span-8;
+
+    &-action {
+      @apply h-full relative z-50 gap-x-5 flex justify-end items-center md:hidden;
+    }
+
+    &-theme {
+      @apply p-1 rounded-full border border-neutral-200 bg-neutral-200/25 dark:border-zinc-800 dark:bg-zinc-800/25;
+    }
+
+    .navbar-nav {
+      @apply hidden h-screen fixed inset-0 z-40 md:flex flex-col items-center justify-center gap-y-5 md:h-full md:relative md:z-0 md:flex-row md:justify-end md:gap-x-5 bg-neutral-100 dark:bg-zinc-900;
+
+      &.active {
+        @apply flex;
+
+        & + .nav-action {
+          @apply h-auto fixed top-[23px] right-[23px] z-50;
+        }
+      }
+
+      .navbar-item {
+        @apply text-xl md:text-base;
+
+        &:hover {
+          @apply text-neutral-600 dark:text-zinc-100;
+        }
+      }
+    }
+  }
+}
+
+.subheader {
+  @apply h-40 grid grid-cols-12 content-center border-b border-neutral-200 bg-neutral-100 dark:border-zinc-800 dark:bg-zinc-900;
+
+  &-details {
+    @apply col-start-2 col-span-10 whitespace-nowrap overflow-hidden;
+  }
+
+  &-slug {
+    @apply font-semibold text-2xl md:text-3xl mb-6;
+  }
+
+  &-date,
+  &-hash {
+    @apply text-sm text-neutral-500 dark:text-zinc-500;
+  }
+}
+
+.main {
+  @apply grid grid-cols-12 my-20;
+
+  .delete,
+  .shortener {
+    @apply col-start-2 col-span-10;
+
+    form {
+      @apply grid grid-cols-12;
+    }
+
+    &-notification {
+      @apply col-span-12 mt-2 text-sm text-neutral-500 dark:text-zinc-500;
+    }
+
+    &-hash {
+      @apply col-span-12 py-4 px-5 font-light rounded border border-neutral-200 bg-neutral-100 dark:border-zinc-800 dark:bg-zinc-900;
+    }
+
+    &-url {
+      @apply col-span-12 py-4 px-5 font-light rounded-t border border-b-0 border-neutral-200 bg-neutral-100 dark:border-zinc-800 dark:bg-zinc-900;
+    }
+
+    &-redirect {
+      @apply col-span-12 sm:col-span-4 p-4 font-light cursor-pointer sm:rounded-bl border sm:border-r-0 border-neutral-200 bg-neutral-100 dark:border-zinc-800 dark:bg-zinc-900;
+    }
+
+    &-service {
+      @apply col-span-6 sm:col-span-4 p-4 font-light cursor-pointer rounded-bl sm:rounded-none border border-r-0 border-t-0 sm:border-t border-neutral-200 bg-neutral-100 dark:border-zinc-800 dark:bg-zinc-900;
+    }
+
+    &-slug {
+      @apply col-span-6 sm:col-span-4 py-4 px-5 font-light rounded-br border border-t-0 sm:border-t border-neutral-200 bg-neutral-100 dark:border-zinc-800 dark:bg-zinc-900;
+    }
+
+    &-submit {
+      @apply col-span-12 mt-5 p-3 uppercase font-normal rounded border border-neutral-200 hover:bg-neutral-200/25 dark:border-zinc-800 dark:hover:bg-zinc-800/25;
+    }
+  }
+
+  .latest,
+  .result {
+    @apply col-start-2 col-span-10 mt-20;
+
+    &-title {
+      @apply font-semibold text-xl mb-5;
+    }
+
+    &-card {
+      @apply grid grid-cols-12 gap-y-5;
+    }
+
+    &-item {
+      @apply relative grid grid-cols-12 col-span-12 p-5 rounded border border-neutral-200 dark:border-zinc-800;
+    }
+
+    &-ads {
+      @apply absolute top-0 right-0 lowercase text-xs font-extralight px-1 pt-[1px] pb-0 rounded-bl rounded-tr border-b border-l border-neutral-200 text-neutral-500 dark:border-zinc-800 dark:text-zinc-500;
+    }
+
+    &-urls {
+      @apply col-span-12 whitespace-nowrap overflow-hidden;
+    }
+
+    &-short {
+      @apply mb-2 font-normal;
+    }
+
+    &-long {
+      @apply text-sm text-neutral-500 dark:text-zinc-500;
+    }
+
+    &-button {
+      @apply col-span-12 mt-5 pt-5 flex justify-start items-center gap-x-3 border-t border-neutral-200 dark:border-zinc-800;
+
+      &-delete,
+      &-statistics,
+      &-copy {
+        @apply p-2 rounded border border-neutral-200 bg-neutral-200/25 dark:border-zinc-800 dark:bg-zinc-800/25;
+      }
+    }
+  }
+
+  .features {
+    @apply col-start-2 col-span-10 mt-20;
+
+    &-card {
+      @apply grid grid-cols-12 gap-5;
+    }
+
+    &-item {
+      @apply col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3 p-5 rounded border border-neutral-200 dark:border-zinc-800;
+
+      &:nth-child(1) .features-icon {
+        @apply bg-indigo-400/10 text-indigo-400/30 dark:bg-indigo-400/5 dark:text-indigo-400/20;
+      }
+
+      &:nth-child(2) .features-icon {
+        @apply bg-pink-400/10 text-pink-400/30 dark:bg-pink-400/5 dark:text-pink-400/20;
+      }
+
+      &:nth-child(3) .features-icon {
+        @apply bg-lime-400/10 text-lime-400/30 dark:bg-lime-400/5 dark:text-lime-400/20;
+      }
+
+      &:nth-child(4) .features-icon {
+        @apply bg-green-400/10 text-green-400/30 dark:bg-green-400/5 dark:text-green-400/20;
+      }
+    }
+
+    &-icon {
+      @apply w-40 h-40 mx-auto p-7 mb-10 mt-5 rounded-full flex justify-center items-center;
+    }
+
+    &-title {
+      @apply font-semibold mb-3;
+    }
+
+    &-text {
+      @apply text-sm text-neutral-500 dark:text-zinc-500;
+    }
+  }
+
+  .statistics {
+    @apply col-start-2 col-span-10 space-y-20;
+
+    &-title {
+      @apply font-semibold text-xl;
+    }
+
+    &-card {
+      @apply grid grid-cols-12 gap-5 mt-5 !important;
+    }
+
+    &-item {
+      @apply col-span-12 sm:col-span-6 md:col-span-4 p-5 flex flex-row justify-between items-center rounded border border-neutral-200 dark:border-zinc-800;
+
+      &:nth-child(1) .statistics-icon {
+        @apply bg-indigo-400/20 text-indigo-400/60 dark:bg-indigo-400/5 dark:text-indigo-400/20;
+      }
+
+      &:nth-child(2) .statistics-icon {
+        @apply bg-pink-400/20 text-pink-400/60 dark:bg-pink-400/5 dark:text-pink-400/20;
+      }
+
+      &:nth-child(3) .statistics-icon {
+        @apply bg-lime-400/20 text-lime-400/60 dark:bg-lime-400/5 dark:text-lime-400/20;
+      }
+
+      &:nth-child(4) .statistics-icon {
+        @apply bg-green-400/20 text-green-400/60 dark:bg-green-400/5 dark:text-green-400/20;
+      }
+
+      &:nth-child(5) .statistics-icon {
+        @apply bg-orange-400/20 text-orange-400/60 dark:bg-orange-400/5 dark:text-orange-400/20;
+      }
+
+      &:nth-child(6) .statistics-icon {
+        @apply bg-teal-400/20 text-teal-400/60 dark:bg-teal-400/5 dark:text-teal-400/20;
+      }
+    }
+
+    &-icon {
+      @apply w-14 h-14 p-0 flex justify-center items-center text-xs rounded-full;
+    }
+
+    &-text {
+      @apply text-4xl font-semibold;
+
+      &-small {
+        @apply text-base;
+      }
+    }
+  }
+
+  .timer {
+    @apply min-h-[250px] col-start-2 col-span-10 flex justify-center items-center;
+
+    &-text {
+      @apply w-60 h-60 text-9xl font-extrabold flex justify-center items-center rounded-full border border-neutral-200 bg-neutral-200/25 dark:border-zinc-800 dark:bg-zinc-800/25;
+    }
+  }
+}
+
+.alert {
+  @apply p-5 col-start-2 col-span-10 text-sm md:text-base rounded border border-neutral-200 bg-neutral-200/25 dark:border-zinc-800 dark:bg-zinc-800/25;
+
+  &-danger {
+    @apply border-rose-400/10 bg-rose-400/5 text-rose-400/80 dark:border-rose-400/10 dark:bg-rose-400/5 dark:text-rose-400/75;
+
+    .alert-text {
+      @apply text-rose-400/75 dark:text-rose-400/50;
+    }
+  }
+
+  &-success {
+    @apply border-lime-500/10 bg-lime-500/5 text-lime-500/70 dark:border-lime-300/10 dark:bg-lime-300/5 dark:text-lime-300/70;
+
+    .alert-text {
+      @apply text-lime-500/60 dark:text-lime-300/50;
+    }
+  }
+
+  &-warning {
+    @apply border-amber-400/10 bg-amber-400/5 text-amber-400/80 dark:border-amber-400/10 dark:bg-amber-400/5 dark:text-amber-400/75;
+
+    .alert-text {
+      @apply text-amber-400/75 dark:text-amber-400/50;
+    }
+  }
+
+  &-primary {
+    @apply border-indigo-400/10 bg-indigo-400/5 text-indigo-400/80 dark:border-indigo-400/10 dark:bg-indigo-400/5 dark:text-indigo-400/75;
+
+    .alert-text {
+      @apply text-indigo-400/75 dark:text-indigo-400/50;
+    }
+  }
+
+  &-title {
+    @apply mb-3 text-xl font-semibold;
+  }
+
+  &-text {
+    @apply text-neutral-500 dark:text-zinc-500;
+  }
+}
