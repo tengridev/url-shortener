@@ -62,6 +62,10 @@ function App({ Component, pageProps }) {
           },
           {
             rel: 'icon',
+            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon-192-192.png`
+          },
+          {
+            rel: 'icon',
             type: 'image/png',
             sizes: '16x16',
             href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon-16-16.png`

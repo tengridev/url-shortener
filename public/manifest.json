@@ -10,18 +10,18 @@
   "background_color": "#18181b",
   "icons": [
     {
-      "src": "/static/img/pwa-192x192.png",
+      "src": "/static/img/pwa-192-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/static/img/pwa-384x384.png",
+      "src": "/static/img/pwa-384-384.png",
       "sizes": "384x384",
       "type": "image/png"
     },
     {
-      "src": "/static/img/pwa-512x512.png",
+      "src": "/static/img/pwa-512-512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
