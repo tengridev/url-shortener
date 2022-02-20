@@ -1,6 +1,7 @@
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { ThemeProvider } from 'next-themes'
-import Head from 'next/head'
+import { NextSeo } from 'next-seo'
 import Script from 'next/script'
 import useTranslation from 'next-translate/useTranslation'
 import getConfig from 'next/config'
@@ -9,39 +10,51 @@ import '../styles/globals.css'
 const { publicRuntimeConfig } = getConfig()
 
 function App({ Component, pageProps }) {
+  const [baseURL, setBaseURL] = useState('')
+  useEffect(() => {
+    setBaseURL(window.location.origin)
+  }, [])
+
   const { asPath, locales } = useRouter()
   const { t } = useTranslation('all')
+  const languages = locales.map((locale) => {
+    if (locale === 'tr') {
+      return {
+        key: locale,
+        rel: 'alternate',
+        hrefLang: 'x-default',
+        href: `${baseURL}`
+      }
+    } else {
+      return {
+        key: locale,
+        rel: 'alternate',
+        hrefLang: locale,
+        href: `${baseURL}/${locale}${asPath}`
+      }
+    }
+  })
 
   return (
     <>
-      <Head>
-        <meta charSet="UTF-8" />
-        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-        />
-        <title>{t('site-title')}</title>
-        <meta name="description" content={t('site-description')} />
-
-        {locales.map((locale) =>
-          locale === 'tr' ? (
-            <link
-              key={locale}
-              rel="alternate"
-              hrefLang="x-default"
-              href={`/`}
-            />
-          ) : (
-            <link
-              key={locale}
-              rel="alternate"
-              hrefLang={locale}
-              href={`/${locale}${asPath}`}
-            />
-          )
-        )}
-      </Head>
+      <NextSeo
+        title={t('site-title')}
+        description={t('site-description')}
+        additionalMetaTags={[
+          {
+            charSet: 'UTF-8'
+          },
+          {
+            httpEquiv: 'X-UA-Compatible',
+            content: 'IE=edge; chrome=1'
+          },
+          {
+            name: 'viewport',
+            content: 'width=device-width, initial-scale=1.0, viewport-fit=cover'
+          }
+        ]}
+        languageAlternates={languages}
+      />
       {publicRuntimeConfig.GOOGLE_ANALYTICS_ID && (
         <>
           <Script
