@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { ThemeProvider } from 'next-themes'
 import { NextSeo } from 'next-seo'
@@ -10,11 +9,6 @@ import '../styles/globals.css'
 const { publicRuntimeConfig } = getConfig()
 
 function App({ Component, pageProps }) {
-  const [baseURL, setBaseURL] = useState('')
-  useEffect(() => {
-    setBaseURL(window.location.origin)
-  }, [])
-
   const { asPath, locales } = useRouter()
   const { t } = useTranslation('all')
   const languages = locales.map((locale) => {
@@ -23,14 +17,14 @@ function App({ Component, pageProps }) {
         key: locale,
         rel: 'alternate',
         hrefLang: 'x-default',
-        href: `${baseURL}`
+        href: publicRuntimeConfig.SITE_URL
       }
     } else {
       return {
         key: locale,
         rel: 'alternate',
         hrefLang: locale,
-        href: `${baseURL}/${locale}${asPath}`
+        href: `${publicRuntimeConfig.SITE_URL}/${locale}${asPath}`
       }
     }
   })
@@ -54,6 +48,23 @@ function App({ Component, pageProps }) {
           }
         ]}
         languageAlternates={languages}
+        canonical={publicRuntimeConfig.SITE_URL}
+        openGraph={{
+          type: 'website',
+          url: publicRuntimeConfig.SITE_URL,
+          title: t('og-title'),
+          description: t('og-description'),
+          images: [
+            {
+              url: `${publicRuntimeConfig.SITE_URL}/static/img/open-graph-1200-630.jpg`,
+              width: 1200,
+              height: 630,
+              alt: t('og-description'),
+              type: 'image/jpeg'
+            }
+          ],
+          site_name: t('site-title')
+        }}
       />
       {publicRuntimeConfig.GOOGLE_ANALYTICS_ID && (
         <>

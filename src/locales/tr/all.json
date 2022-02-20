@@ -1,4 +1,6 @@
 {
   "site-title": "Link Kısaltma",
-  "site-description": "Ücretsiz, hızlı ve güvenilir link kısaltma servisi."
+  "site-description": "Ücretsiz, hızlı ve güvenilir link kısaltma servisi.",
+  "og-title": "OG Title Alanı",
+  "og-description": "OG Desc Alanı"
 }

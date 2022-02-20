@@ -9,6 +9,7 @@ const nextConfig = {
     SIGNATURE_KEY: localEnv && localEnv.SIGNATURE_KEY
   },
   publicRuntimeConfig: {
+    SITE_URL: localEnv && localEnv.SITE_URL,
     GOOGLE_ADSENSE_ID: localEnv && localEnv.GOOGLE_ADSENSE_ID,
     GOOGLE_ANALYTICS_ID: localEnv && localEnv.GOOGLE_ANALYTICS_ID
   },
