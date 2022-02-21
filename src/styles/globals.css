@@ -112,8 +112,7 @@ body {
     }
   }
 
-  .latest,
-  .result {
+  .shortened {
     @apply col-start-2 col-span-10 mt-20;
 
     &-title {
@@ -144,14 +143,12 @@ body {
       @apply text-sm text-neutral-500 dark:text-zinc-500;
     }
 
-    &-button {
+    &-button-group {
       @apply col-span-12 mt-5 pt-5 flex justify-start items-center gap-x-3 border-t border-neutral-200 dark:border-zinc-800;
+    }
 
-      &-delete,
-      &-statistics,
-      &-copy {
-        @apply p-2 rounded border border-neutral-200 bg-neutral-200/25 dark:border-zinc-800 dark:bg-zinc-800/25;
-      }
+    &-button {
+      @apply p-2 rounded border border-neutral-200 bg-neutral-200/25 dark:border-zinc-800 dark:bg-zinc-800/25;
     }
   }
 

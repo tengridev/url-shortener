@@ -11,6 +11,7 @@
   "short-address": "kisaadres",
   "shorten-button": "Kısalt",
   "error": "Hata",
+  "unknown-error": "Bilinmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.",
   "empty-url": "URL adresi boş bırakılamaz.",
   "invalid-url": "URL adresi geçersiz.",
   "banned-domain": "URL adresinde kullanılan alan adı yasaklandı.",

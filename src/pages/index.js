@@ -42,12 +42,18 @@ const Home = () => {
               }
 
               axios
-                .post(`${publicRuntimeConfig.API_URL}/urls`, data)
-                .then(function (response) {
-                  console.log(response)
+                .post(`${publicRuntimeConfig.API_URL}/urls`, null, {
+                  params: data
                 })
-                .catch(function (error) {
-                  console.log(error)
+                .then((res) => {
+                  console.log(res.data)
+                })
+                .catch((err) => {
+                  setShortAlert({
+                    title: t('error'),
+                    text: t('unknown-error'),
+                    className: 'alert-danger'
+                  })
                 })
             } else {
               setShortAlert({
