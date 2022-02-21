@@ -1,7 +1,7 @@
 {
-  "name": "PWA App",
-  "short_name": "App",
-  "description": "PWA Description",
+  "name": "URL Kısaltıcı",
+  "short_name": "URL Kısaltıcı",
+  "description": "URL kısaltıcı, sahip olduğunuz uzun linkleri ücretsiz bir şekilde daha kısa ve akılda kalıcı linkler haline getirmenizi sağlar. Link kısaltma sonrası istatistikleri görüntüleyebilirsiniz.",
   "scope": "/",
   "start_url": "/",
   "display": "standalone",

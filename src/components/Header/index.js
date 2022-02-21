@@ -1,22 +1,24 @@
+import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { links } from '../../data/links'
 import useTranslation from 'next-translate/useTranslation'
 import ThemeSwitcher from '../ThemeSwitcher'
 import Link from 'next/link'
-import { useState } from 'react'
 
 const Header = () => {
   const [open, setOpen] = useState(false)
   const { t } = useTranslation('links')
+
+  const logoText = t('all:logo-text').split(' ')
 
   return (
     <div className="header">
       <div className="logo">
         <Link href={`/`}>
           <a className="text-2xl">
-            <span className="font-semibold">URL</span>
-            <span className="font-extralight">Shortener</span>
+            <span className="font-semibold">{logoText[0]}</span>
+            <span className="font-extralight">{logoText[1]}</span>
           </a>
         </Link>
       </div>

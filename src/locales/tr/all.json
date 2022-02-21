@@ -1,7 +1,13 @@
 {
-  "site-title": "Link Kısaltma",
-  "site-description": "Ücretsiz, hızlı ve güvenilir link kısaltma servisi.",
-  "og-title": "OG Title Alanı",
-  "og-description": "OG Desc Alanı",
-  "application-name": "Uygulama adı"
+  "site-title": "URL Kısaltıcı",
+  "site-description": "URL kısaltıcı, sahip olduğunuz uzun linkleri ücretsiz bir şekilde daha kısa ve akılda kalıcı linkler haline getirmenizi sağlar. Link kısaltma sonrası istatistikleri görüntüleyebilirsiniz.",
+  "og-title": "URL Kısaltıcı",
+  "og-description": "URL kısaltıcı, sahip olduğunuz uzun linkleri ücretsiz bir şekilde daha kısa ve akılda kalıcı linkler haline getirmenizi sağlar. Link kısaltma sonrası istatistikleri görüntüleyebilirsiniz.",
+  "application-name": "URL Kısaltıcı",
+  "logo-text": "URL Kısaltıcı",
+  "long-url": "Uzun URL adresi",
+  "direct": "Direkt",
+  "timer": "Zamanlayıcı",
+  "short-address": "kisaadres",
+  "shorten-button": "Kısalt"
 }
