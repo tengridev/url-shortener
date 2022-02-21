@@ -9,14 +9,9 @@ const nextConfig = {
     register: true,
     skipWaiting: true
   },
-  serverRuntimeConfig: {
-    BANNED_SERVICES: localEnv && localEnv.BANNED_SERVICES,
-    SIGNATURE_KEY: localEnv && localEnv.SIGNATURE_KEY
-  },
   publicRuntimeConfig: {
     SITE_URL: localEnv && localEnv.SITE_URL,
-    SERVICES: localEnv && localEnv.SERVICES,
-    REDIRECT: localEnv && localEnv.REDIRECT,
+    API_URL: localEnv && localEnv.API_URL,
     TWITTER: localEnv && localEnv.TWITTER,
     GOOGLE_ADSENSE_ID: localEnv && localEnv.GOOGLE_ADSENSE_ID,
     GOOGLE_ANALYTICS_ID: localEnv && localEnv.GOOGLE_ANALYTICS_ID

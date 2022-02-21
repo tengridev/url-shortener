@@ -3,11 +3,11 @@
   "short_name": "URL Kısaltıcı",
   "description": "URL kısaltıcı, sahip olduğunuz uzun linkleri ücretsiz bir şekilde daha kısa ve akılda kalıcı linkler haline getirmenizi sağlar. Link kısaltma sonrası istatistikleri görüntüleyebilirsiniz.",
   "scope": "/",
-  "start_url": "/",
+  "start_url": "/?utm_source=PWA",
   "display": "standalone",
   "orientation": "portrait",
-  "theme_color": "#18181b",
-  "background_color": "#18181b",
+  "theme_color": "#f5f5f5",
+  "background_color": "#f5f5f5",
   "icons": [
     {
       "src": "/static/img/pwa-192-192.png",

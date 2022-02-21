@@ -9,5 +9,11 @@
   "direct": "Direkt",
   "timer": "Zamanlayıcı",
   "short-address": "kisaadres",
-  "shorten-button": "Kısalt"
+  "shorten-button": "Kısalt",
+  "error": "Hata",
+  "empty-url": "URL adresi boş bırakılamaz.",
+  "invalid-url": "URL adresi geçersiz.",
+  "banned-domain": "URL adresinde kullanılan alan adı yasaklandı.",
+  "empty-service": "Servis boş bırakılamaz.",
+  "invalid-service": "Servis geçersiz."
 }
