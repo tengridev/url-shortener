@@ -3,6 +3,7 @@ import { faTrash, faChartPie, faCopy } from '@fortawesome/free-solid-svg-icons'
 import { ads } from '../../data/ads'
 import useTranslation from 'next-translate/useTranslation'
 import getConfig from 'next/config'
+import React from 'react'
 
 const { publicRuntimeConfig } = getConfig()
 
@@ -11,7 +12,7 @@ const Shortened = ({ title, data, advertising }) => {
 
   const AdsComponent = (order) => {
     if (ads.shortened.length > 0) {
-      const find = ads.shortened.find((item) => item.order === order)
+      const find = ads.shortened.find((item) => item.order === order.order)
 
       if (find) {
         return (
@@ -39,19 +40,21 @@ const Shortened = ({ title, data, advertising }) => {
             </div>
             <div className="shortened-button-group">
               <button type="button" className="shortened-button">
-                <FontAwesomeIcon icon={faTrash} className="w-6 h-6" />
+                <FontAwesomeIcon icon={faTrash} className="w-5 h-5" />
               </button>
               <button type="button" className="shortened-button">
-                <FontAwesomeIcon icon={faChartPie} className="w-6 h-6" />
+                <FontAwesomeIcon icon={faChartPie} className="w-5 h-5" />
               </button>
               <button type="button" className="shortened-button">
-                <FontAwesomeIcon icon={faCopy} className="w-6 h-6" />
+                <FontAwesomeIcon icon={faCopy} className="w-5 h-5" />
               </button>
             </div>
           </div>
         )
       }
     }
+
+    return false
   }
 
   return (
@@ -59,10 +62,10 @@ const Shortened = ({ title, data, advertising }) => {
       {title && <h5 className="shortened-title">{title}</h5>}
       <div className="shortened-card">
         {data.map((item, index) => (
-          <>
+          <React.Fragment key={index}>
             {advertising && <AdsComponent order={index} />}
 
-            <div className="shortened-item" key={index}>
+            <div className="shortened-item">
               <div className="shortened-urls">
                 <p className="shortened-short">
                   <a href={item.url_short}>{item.url_short}</a>
@@ -73,29 +76,29 @@ const Shortened = ({ title, data, advertising }) => {
                   </a>
                 </p>
               </div>
-              <div className="shortened-button">
+              <div className="shortened-button-group">
                 <a
                   href={`${publicRuntimeConfig.SITE_URL}/delete/${item.url_delete}`}
-                  className="shortened-button-delete"
+                  className="shortened-button"
                 >
-                  <FontAwesomeIcon icon={faTrash} className="w-6 h-6" />
+                  <FontAwesomeIcon icon={faTrash} className="w-5 h-5" />
                 </a>
                 <a
                   href={`${publicRuntimeConfig.SITE_URL}/statistics/${item.url_slug}`}
-                  className="shortened-button-statistics"
+                  className="shortened-button"
                 >
-                  <FontAwesomeIcon icon={faChartPie} className="w-6 h-6" />
+                  <FontAwesomeIcon icon={faChartPie} className="w-5 h-5" />
                 </a>
                 <button
                   type="button"
-                  className="shortened-button-copy"
+                  className="shortened-button"
                   onClick={() => navigator.clipboard.writeText(item.url_short)}
                 >
-                  <FontAwesomeIcon icon={faCopy} className="w-6 h-6" />
+                  <FontAwesomeIcon icon={faCopy} className="w-5 h-5" />
                 </button>
               </div>
             </div>
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>

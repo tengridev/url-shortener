@@ -148,7 +148,7 @@ body {
     }
 
     &-button {
-      @apply p-2 rounded border border-neutral-200 bg-neutral-200/25 dark:border-zinc-800 dark:bg-zinc-800/25;
+      @apply p-2 flex justify-center items-center rounded border border-neutral-200 bg-neutral-200/25 dark:border-zinc-800 dark:bg-zinc-800/25;
     }
   }
 

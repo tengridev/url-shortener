@@ -5,6 +5,7 @@ import axios from 'axios'
 import useTranslation from 'next-translate/useTranslation'
 import getConfig from 'next/config'
 import Features from '../components/Features'
+import Shortened from '../components/Shortened'
 import Alert from '../components/Alert'
 
 const { publicRuntimeConfig } = getConfig()
@@ -12,6 +13,7 @@ const { publicRuntimeConfig } = getConfig()
 const Home = () => {
   const { t } = useTranslation('all')
   const [shortAlert, setShortAlert] = useState(false)
+  const [shortenedData, setShortenedData] = useState(false)
 
   const shortenURL = (event) => {
     event.preventDefault()
@@ -45,9 +47,18 @@ const Home = () => {
                   params: data
                 })
                 .then((res) => {
-                  console.log(res.data)
+                  if (!res.data.error) {
+                    setShortenedData([res.data])
+                  } else {
+                    setShortenedData(false)
+                    setShortAlert({
+                      title: t('error'),
+                      text: t(`api-${res.data.error.key.replaceAll('_', '-')}`),
+                      className: 'alert-danger'
+                    })
+                  }
                 })
-                .catch((err) => {
+                .catch(() => {
                   setShortAlert({
                     title: t('error'),
                     text: t('unknown-error'),
@@ -137,6 +148,14 @@ const Home = () => {
           title={shortAlert.title}
           text={shortAlert.text}
           className={`mt-20 ${shortAlert.className}`}
+        />
+      )}
+
+      {shortenedData && (
+        <Shortened
+          title={t('shortened-result')}
+          data={shortenedData}
+          advertising={false}
         />
       )}
 
