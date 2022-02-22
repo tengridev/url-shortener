@@ -11,10 +11,7 @@ const nextConfig = {
   },
   publicRuntimeConfig: {
     SITE_URL: localEnv && localEnv.SITE_URL,
-    API_URL: localEnv && localEnv.API_URL,
-    TWITTER: localEnv && localEnv.TWITTER,
-    GOOGLE_ADSENSE_ID: localEnv && localEnv.GOOGLE_ADSENSE_ID,
-    GOOGLE_ANALYTICS_ID: localEnv && localEnv.GOOGLE_ANALYTICS_ID
+    API_URL: localEnv && localEnv.API_URL
   },
   ...nextTranslate()
 }

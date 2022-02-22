@@ -65,11 +65,11 @@ const Shortened = ({ title, data, advertising }) => {
             <div className="shortened-item" key={index}>
               <div className="shortened-urls">
                 <p className="shortened-short">
-                  <a href={item.url_slug}>{item.url_slug}</a>
+                  <a href={item.url_short}>{item.url_short}</a>
                 </p>
                 <p className="shortened-long">
-                  <a href={item.url_address} rel="nofollow">
-                    {item.url_address}
+                  <a href={item.url_long} rel="nofollow">
+                    {item.url_long}
                   </a>
                 </p>
               </div>
@@ -86,7 +86,11 @@ const Shortened = ({ title, data, advertising }) => {
                 >
                   <FontAwesomeIcon icon={faChartPie} className="w-6 h-6" />
                 </a>
-                <button type="button" className="shortened-button-copy">
+                <button
+                  type="button"
+                  className="shortened-button-copy"
+                  onClick={() => navigator.clipboard.writeText(item.url_short)}
+                >
                   <FontAwesomeIcon icon={faCopy} className="w-6 h-6" />
                 </button>
               </div>

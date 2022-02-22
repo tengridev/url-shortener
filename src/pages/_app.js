@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import { ThemeProvider } from 'next-themes'
 import { NextSeo } from 'next-seo'
 import { config } from '@fortawesome/fontawesome-svg-core'
+import { settings } from '../data/settings'
 import Script from 'next/script'
 import useTranslation from 'next-translate/useTranslation'
 import getConfig from 'next/config'
@@ -122,16 +123,11 @@ function App({ Component, pageProps }) {
           ],
           site_name: t('site-title')
         }}
-        twitter={{
-          handle: `@${publicRuntimeConfig.TWITTER}`,
-          site: `@${publicRuntimeConfig.TWITTER}`,
-          cardType: 'summary_large_image'
-        }}
       />
-      {publicRuntimeConfig.GOOGLE_ANALYTICS_ID && (
+      {settings.google.analytics && (
         <>
           <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${publicRuntimeConfig.GOOGLE_ANALYTICS_ID}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${settings.google.analytics}`}
             strategy="lazyOnload"
             async
           />
@@ -141,17 +137,17 @@ function App({ Component, pageProps }) {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
-              gtag('config', '${publicRuntimeConfig.GOOGLE_ANALYTICS_ID}', {
+              gtag('config', '${settings.google.analytics}', {
                 page_path: window.location.pathname,
               });
             `}
           </Script>
         </>
       )}
-      {publicRuntimeConfig.GOOGLE_ADSENSE_ID && (
+      {settings.google.adsense && (
         <Script
           id="google-adsense"
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${publicRuntimeConfig.GOOGLE_ADSENSE_ID}`}
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${settings.google.adsense}`}
           crossorigin="anonymous"
           strategy="lazyOnload"
           async

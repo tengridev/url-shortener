@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { regex } from '../lib/regex'
-import { redirects } from '../data/redirects'
-import { services } from '../data/services'
+import { settings } from '../data/settings'
 import axios from 'axios'
 import useTranslation from 'next-translate/useTranslation'
 import getConfig from 'next/config'
@@ -27,9 +26,9 @@ const Home = () => {
           .toLocaleLowerCase('en-US')
           .replaceAll('www.', '')
 
-        if (!services.banned.includes(parseURL)) {
+        if (!settings.services.banned.includes(parseURL)) {
           if (service.value) {
-            if (services.default.includes(service.value)) {
+            if (settings.services.default.includes(service.value)) {
               const data = {
                 address: url.value,
                 service: service.value
@@ -105,7 +104,7 @@ const Home = () => {
           />
 
           <select name="redirect" className="shortener-redirect">
-            {redirects.default.map((item, index) => (
+            {settings.redirects.default.map((item, index) => (
               <option value={item} key={index}>
                 {t(item)}
               </option>
@@ -113,7 +112,7 @@ const Home = () => {
           </select>
 
           <select name="service" className="shortener-service" required>
-            {services.default.map((item, index) => (
+            {settings.services.default.map((item, index) => (
               <option value={item} key={index}>
                 {t(item)}
               </option>

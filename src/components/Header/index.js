@@ -25,7 +25,7 @@ const Header = () => {
 
       <div className="nav">
         <div className={`navbar-nav ${open ? 'active' : ''}`}>
-          {links.header.map((item, index) => (
+          {links.navigation.header.map((item, index) => (
             <Link href={item.href} key={index}>
               <a title={t(item.title)} className="navbar-item">
                 {t(item.title)}
