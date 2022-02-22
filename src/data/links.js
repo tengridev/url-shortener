@@ -3,15 +3,15 @@ export const links = {
     header: [
       {
         href: '/',
-        title: 'link-home'
+        title: 'home'
       },
       {
         href: '/statistics',
-        title: 'link-statistics'
+        title: 'statistics'
       },
       {
         href: '/delete',
-        title: 'link-delete'
+        title: 'delete'
       }
     ]
   }

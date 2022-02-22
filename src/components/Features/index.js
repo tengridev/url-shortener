@@ -18,9 +18,9 @@ const Features = () => {
             <FontAwesomeIcon icon={faArrowPointer} className="w-20 h-20" />
           </div>
           <div className="features-title">
-            <h5>{t('features-title-selectable')}</h5>
+            <h5>{t('selectable.title')}</h5>
           </div>
-          <div className="features-text">{t('features-text-selectable')}</div>
+          <div className="features-text">{t('selectable.text')}</div>
         </div>
 
         <div className="features-item">
@@ -28,9 +28,9 @@ const Features = () => {
             <FontAwesomeIcon icon={faLink} className="w-20 h-20" />
           </div>
           <div className="features-title">
-            <h5>{t('features-title-custom')}</h5>
+            <h5>{t('custom.title')}</h5>
           </div>
-          <div className="features-text">{t('features-text-custom')}</div>
+          <div className="features-text">{t('custom.text')}</div>
         </div>
 
         <div className="features-item">
@@ -38,9 +38,9 @@ const Features = () => {
             <FontAwesomeIcon icon={faChartPie} className="w-20 h-20" />
           </div>
           <div className="features-title">
-            <h5>{t('features-title-statistics')}</h5>
+            <h5>{t('statistics.title')}</h5>
           </div>
-          <div className="features-text">{t('features-text-statistics')}</div>
+          <div className="features-text">{t('statistics.text')}</div>
         </div>
 
         <div className="features-item">
@@ -48,9 +48,9 @@ const Features = () => {
             <FontAwesomeIcon icon={faTurkishLiraSign} className="w-20 h-20" />
           </div>
           <div className="features-title">
-            <h5>{t('features-title-free')}</h5>
+            <h5>{t('free.title')}</h5>
           </div>
-          <div className="features-text">{t('features-text-free')}</div>
+          <div className="features-text">{t('free.text')}</div>
         </div>
       </div>
     </div>

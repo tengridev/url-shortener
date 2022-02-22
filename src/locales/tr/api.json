@@ -1,0 +1,18 @@
+{
+  "success": {
+    "data-deleted": "Veriler başarılı bir şekilde silindi.",
+    "url-deleted": "URL adresi başarılı bir şekilde silindi.",
+    "statistics-deleted": "İstatistik başarılı bir şekilde silindi."
+  },
+  "error": {
+    "ip-ban": "IP adresiniz engellendi.",
+    "id-invalid": "ID değeri geçersiz.",
+    "url-ban": "URL adresinde kullanılan alan adı yasaklandı.",
+    "url-invalid": "URL adresi geçersiz.",
+    "parameter-deficient": "Eksik parametre mevcut.",
+    "hash-invalid": "HASH değeri geçersiz.",
+    "data-not-found": "Görüntülemek istediğiniz adres mevcut değil ya da silinmiş.",
+    "data-not-inserted": "Verilerin eklenmesi sırasında bir hata oluştu.",
+    "data-not-deleted": "Verilerin silinmesi sırasında bir hata oluştu."
+  }
+}

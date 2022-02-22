@@ -11,8 +11,12 @@ const nextConfig = {
     sw: 'service-worker.js'
   },
   publicRuntimeConfig: {
-    SITE_URL: localEnv && localEnv.SITE_URL,
-    API_URL: localEnv && localEnv.API_URL
+    SITE_URL: process.env.SITE_URL
+      ? process.env.SITE_URL
+      : localEnv && localEnv.SITE_URL,
+    API_URL: process.env.API_URL
+      ? process.env.API_URL
+      : localEnv && localEnv.API_URL
   },
   ...nextTranslate()
 }

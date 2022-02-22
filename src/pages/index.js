@@ -18,6 +18,7 @@ const Home = () => {
   const shortenURL = (event) => {
     event.preventDefault()
     setShortAlert(false)
+    setShortenedData(false)
 
     const { url, service, redirect, slug } = event.target
 
@@ -31,6 +32,7 @@ const Home = () => {
         if (!settings.services.banned.includes(parseURL)) {
           if (service.value) {
             if (settings.services.default.includes(service.value)) {
+              let isContinue = true
               const data = {
                 address: url.value,
                 service: service.value
@@ -39,32 +41,49 @@ const Home = () => {
                 data.redirect = redirect.value
               }
               if (slug.value) {
-                data.slug = slug.value
-              }
+                if (
+                  !settings.slugs.banned.includes(
+                    slug.value.toLocaleLowerCase('en-US')
+                  )
+                ) {
+                  data.slug = slug.value
+                } else {
+                  isContinue = false
 
-              axios
-                .post(`${publicRuntimeConfig.API_URL}/urls`, null, {
-                  params: data
-                })
-                .then((res) => {
-                  if (!res.data.error) {
-                    setShortenedData([res.data])
-                  } else {
-                    setShortenedData(false)
-                    setShortAlert({
-                      title: t('error'),
-                      text: t(`api-${res.data.error.key.replaceAll('_', '-')}`),
-                      className: 'alert-danger'
-                    })
-                  }
-                })
-                .catch(() => {
                   setShortAlert({
                     title: t('error'),
-                    text: t('unknown-error'),
+                    text: t('banned-slug'),
                     className: 'alert-danger'
                   })
-                })
+                }
+              }
+
+              if (isContinue) {
+                axios
+                  .post(`${publicRuntimeConfig.API_URL}/urls`, null, {
+                    params: data
+                  })
+                  .then((res) => {
+                    if (!res.data.error) {
+                      setShortenedData([res.data])
+                    } else {
+                      setShortAlert({
+                        title: t('error'),
+                        text: t(
+                          `api:error.${res.data.error.key.replaceAll('_', '-')}`
+                        ),
+                        className: 'alert-danger'
+                      })
+                    }
+                  })
+                  .catch(() => {
+                    setShortAlert({
+                      title: t('error'),
+                      text: t('unknown-error'),
+                      className: 'alert-danger'
+                    })
+                  })
+              }
             } else {
               setShortAlert({
                 title: t('error'),
@@ -125,7 +144,7 @@ const Home = () => {
           <select name="service" className="shortener-service" required>
             {settings.services.default.map((item, index) => (
               <option value={item} key={index}>
-                {t(item)}
+                {item}
               </option>
             ))}
           </select>
