@@ -1,6 +1,7 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { regex } from '../lib/regex'
 import { settings } from '../data/settings'
+import ls from 'localstorage-slim'
 import axios from 'axios'
 import useTranslation from 'next-translate/useTranslation'
 import getConfig from 'next/config'
@@ -8,15 +9,29 @@ import Features from '../components/Features'
 import Shortened from '../components/Shortened'
 import Alert from '../components/Alert'
 
+ls.config.encrypt = settings.localStorage.encrypt
+ls.config.ttl = settings.localStorage.ttl
+if (settings.localStorage.encrypt)
+  ls.config.secret = settings.localStorage.secret
+
 const { publicRuntimeConfig } = getConfig()
 
 const Home = () => {
   const { t } = useTranslation('all')
+  const [loading, setLoading] = useState(false)
   const [shortAlert, setShortAlert] = useState(false)
   const [shortenedData, setShortenedData] = useState(false)
+  const [lsShortenedData, setLsShortenedData] = useState(false)
+
+  useEffect(() => {
+    if (ls.get('shortened')) {
+      setLsShortenedData(ls.get('shortened').reverse())
+    }
+  }, [])
 
   const shortenURL = (event) => {
     event.preventDefault()
+    setLoading(true)
     setShortAlert(false)
     setShortenedData(false)
 
@@ -50,6 +65,7 @@ const Home = () => {
                 } else {
                   isContinue = false
 
+                  setLoading(false)
                   setShortAlert({
                     title: t('error'),
                     text: t('banned-slug'),
@@ -65,8 +81,24 @@ const Home = () => {
                   })
                   .then((res) => {
                     if (!res.data.error) {
+                      setLoading(false)
                       setShortenedData([res.data])
+
+                      const lsShortened = ls.get('shortened')
+                      if (lsShortened) {
+                        if (
+                          lsShortened.length === settings.latestShortened.length
+                        ) {
+                          lsShortened.splice(0, 1)
+                        }
+
+                        ls.set('shortened', [...lsShortened, res.data])
+                      } else {
+                        ls.set('shortened', [res.data])
+                      }
+                      setLsShortenedData(ls.get('shortened').reverse())
                     } else {
+                      setLoading(false)
                       setShortAlert({
                         title: t('error'),
                         text: t(
@@ -77,6 +109,7 @@ const Home = () => {
                     }
                   })
                   .catch(() => {
+                    setLoading(false)
                     setShortAlert({
                       title: t('error'),
                       text: t('unknown-error'),
@@ -85,6 +118,7 @@ const Home = () => {
                   })
               }
             } else {
+              setLoading(false)
               setShortAlert({
                 title: t('error'),
                 text: t('invalid-service'),
@@ -92,6 +126,7 @@ const Home = () => {
               })
             }
           } else {
+            setLoading(false)
             setShortAlert({
               title: t('error'),
               text: t('empty-service'),
@@ -99,6 +134,7 @@ const Home = () => {
             })
           }
         } else {
+          setLoading(false)
           setShortAlert({
             title: t('error'),
             text: t('banned-domain'),
@@ -106,6 +142,7 @@ const Home = () => {
           })
         }
       } else {
+        setLoading(false)
         setShortAlert({
           title: t('error'),
           text: t('invalid-url'),
@@ -113,6 +150,7 @@ const Home = () => {
         })
       }
     } else {
+      setLoading(false)
       setShortAlert({
         title: t('error'),
         text: t('empty-url'),
@@ -175,6 +213,14 @@ const Home = () => {
           title={t('shortened-result')}
           data={shortenedData}
           advertising={false}
+        />
+      )}
+
+      {settings.latestShortened.active && lsShortenedData && (
+        <Shortened
+          title={t('shortened-latest')}
+          data={lsShortenedData}
+          advertising={true}
         />
       )}
 

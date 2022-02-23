@@ -40,13 +40,13 @@ const Shortened = ({ title, data, advertising }) => {
             </div>
             <div className="shortened-button-group">
               <button type="button" className="shortened-button">
-                <FontAwesomeIcon icon={faTrash} className="w-5 h-5" />
+                <FontAwesomeIcon icon={faTrash} className="w-4 h-4" />
               </button>
               <button type="button" className="shortened-button">
-                <FontAwesomeIcon icon={faChartPie} className="w-5 h-5" />
+                <FontAwesomeIcon icon={faChartPie} className="w-4 h-4" />
               </button>
               <button type="button" className="shortened-button">
-                <FontAwesomeIcon icon={faCopy} className="w-5 h-5" />
+                <FontAwesomeIcon icon={faCopy} className="w-4 h-4" />
               </button>
             </div>
           </div>
@@ -81,20 +81,20 @@ const Shortened = ({ title, data, advertising }) => {
                   href={`${publicRuntimeConfig.SITE_URL}/delete/${item.url_delete}`}
                   className="shortened-button"
                 >
-                  <FontAwesomeIcon icon={faTrash} className="w-5 h-5" />
+                  <FontAwesomeIcon icon={faTrash} className="w-4 h-4" />
                 </a>
                 <a
                   href={`${publicRuntimeConfig.SITE_URL}/statistics/${item.url_slug}`}
                   className="shortened-button"
                 >
-                  <FontAwesomeIcon icon={faChartPie} className="w-5 h-5" />
+                  <FontAwesomeIcon icon={faChartPie} className="w-4 h-4" />
                 </a>
                 <button
                   type="button"
                   className="shortened-button"
                   onClick={() => navigator.clipboard.writeText(item.url_short)}
                 >
-                  <FontAwesomeIcon icon={faCopy} className="w-5 h-5" />
+                  <FontAwesomeIcon icon={faCopy} className="w-4 h-4" />
                 </button>
               </div>
             </div>

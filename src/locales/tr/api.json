@@ -9,6 +9,8 @@
     "id-invalid": "ID değeri geçersiz.",
     "url-ban": "URL adresinde kullanılan alan adı yasaklandı.",
     "url-invalid": "URL adresi geçersiz.",
+    "slug-ban": "Kullanmak istediğiniz özel adres yasaklandı.",
+    "slug-used": "Kullanmak istediğiniz özel adres zaten başka bir URL için kullanılıyor.",
     "parameter-deficient": "Eksik parametre mevcut.",
     "hash-invalid": "HASH değeri geçersiz.",
     "data-not-found": "Görüntülemek istediğiniz adres mevcut değil ya da silinmiş.",
