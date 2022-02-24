@@ -191,7 +191,10 @@ const Home = () => {
             className="shortener-slug"
           />
 
-          <button type="submit" className="shortener-submit">
+          <button
+            type="submit"
+            className={`shortener-submit ${loading ? 'animate-pulse' : ''}`}
+          >
             {t('shorten-button')}
           </button>
         </form>
