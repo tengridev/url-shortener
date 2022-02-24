@@ -5,31 +5,45 @@ import { config } from '@fortawesome/fontawesome-svg-core'
 import { settings } from '../data/settings'
 import Script from 'next/script'
 import useTranslation from 'next-translate/useTranslation'
-import getConfig from 'next/config'
 import Layout from '../components/Layout'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 import '../styles/globals.css'
 config.autoAddCss = false
 
-const { publicRuntimeConfig } = getConfig()
-
 function App({ Component, pageProps }) {
   const { asPath, locales } = useRouter()
-  const { t } = useTranslation('all')
+  const { t, lang } = useTranslation('all')
+
+  const verifications = []
+  settings.searchEngines.google.verification &&
+    verifications.push({
+      name: 'google-site-verification',
+      content: settings.searchEngines.google.verification
+    })
+  settings.searchEngines.yandex.verification &&
+    verifications.push({
+      name: 'yandex-verification',
+      content: settings.searchEngines.yandex.verification
+    })
+  settings.searchEngines.bing.verification &&
+    verifications.push({
+      name: 'msvalidate.01',
+      content: settings.searchEngines.bing.verification
+    })
   const languages = locales.map((locale) => {
     if (locale === 'tr') {
       return {
         key: locale,
         rel: 'alternate',
         hrefLang: 'x-default',
-        href: publicRuntimeConfig.SITE_URL
+        href: settings.main.URL
       }
     } else {
       return {
         key: locale,
         rel: 'alternate',
         hrefLang: locale,
-        href: `${publicRuntimeConfig.SITE_URL}/${locale}${asPath}`
+        href: `${settings.main.URL}/${locale}${asPath}`
       }
     }
   })
@@ -58,63 +72,64 @@ function App({ Component, pageProps }) {
           {
             name: 'apple-mobile-web-app-title',
             content: t('application-name')
-          }
+          },
+          ...verifications
         ]}
         additionalLinkTags={[
           {
             rel: 'shortcut icon',
-            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon.png`
+            href: `${settings.main.URL}/static/img/favicon.png`
           },
           {
             rel: 'icon',
-            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon-192-192.png`
+            href: `${settings.main.URL}/static/img/favicon-192-192.png`
           },
           {
             rel: 'icon',
             type: 'image/png',
             sizes: '16x16',
-            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon-16-16.png`
+            href: `${settings.main.URL}/static/img/favicon-16-16.png`
           },
           {
             rel: 'icon',
             type: 'image/png',
             sizes: '32x32',
-            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon-32-32.png`
+            href: `${settings.main.URL}/static/img/favicon-32-32.png`
           },
           {
             rel: 'apple-touch-icon',
-            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon.png`
+            href: `${settings.main.URL}/static/img/favicon.png`
           },
           {
             rel: 'apple-touch-icon',
             sizes: '152x152',
-            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon-152-152.png`
+            href: `${settings.main.URL}/static/img/favicon-152-152.png`
           },
           {
             rel: 'apple-touch-icon',
             sizes: '167x167',
-            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon-167-167.png`
+            href: `${settings.main.URL}/static/img/favicon-167-167.png`
           },
           {
             rel: 'apple-touch-icon',
             sizes: '180x180',
-            href: `${publicRuntimeConfig.SITE_URL}/static/img/favicon-180-180.png`
+            href: `${settings.main.URL}/static/img/favicon-180-180.png`
           },
           {
             rel: 'manifest',
-            href: `${publicRuntimeConfig.SITE_URL}/manifest.json`
+            href: `${settings.main.URL}/manifest/${lang}.json`
           }
         ]}
         languageAlternates={languages}
-        canonical={publicRuntimeConfig.SITE_URL}
+        canonical={settings.main.URL}
         openGraph={{
           type: 'website',
-          url: publicRuntimeConfig.SITE_URL,
+          url: settings.main.URL,
           title: t('og-title'),
           description: t('og-description'),
           images: [
             {
-              url: `${publicRuntimeConfig.SITE_URL}/static/img/open-graph-1200-630.jpg`,
+              url: `${settings.main.URL}/static/img/open-graph-1200-630.jpg`,
               width: 1200,
               height: 630,
               alt: t('og-description'),
@@ -124,10 +139,10 @@ function App({ Component, pageProps }) {
           site_name: t('site-title')
         }}
       />
-      {settings.google.analytics && (
+      {settings.searchEngines.google.analytics && (
         <>
           <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${settings.google.analytics}`}
+            src={`https://www.googletagmanager.com/gtag/js?id=${settings.searchEngines.google.analytics}`}
             strategy="lazyOnload"
             async
           />
@@ -137,17 +152,17 @@ function App({ Component, pageProps }) {
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
 
-              gtag('config', '${settings.google.analytics}', {
+              gtag('config', '${settings.searchEngines.google.analytics}', {
                 page_path: window.location.pathname,
               });
             `}
           </Script>
         </>
       )}
-      {settings.google.adsense && (
+      {settings.searchEngines.google.adsense && (
         <Script
           id="google-adsense"
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${settings.google.adsense}`}
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${settings.searchEngines.google.adsense}`}
           crossorigin="anonymous"
           strategy="lazyOnload"
           async

@@ -4,7 +4,6 @@ import { settings } from '../data/settings'
 import ls from 'localstorage-slim'
 import axios from 'axios'
 import useTranslation from 'next-translate/useTranslation'
-import getConfig from 'next/config'
 import Features from '../components/Features'
 import Shortened from '../components/Shortened'
 import Alert from '../components/Alert'
@@ -13,8 +12,6 @@ ls.config.encrypt = settings.localStorage.encrypt
 ls.config.ttl = settings.localStorage.ttl
 if (settings.localStorage.encrypt)
   ls.config.secret = settings.localStorage.secret
-
-const { publicRuntimeConfig } = getConfig()
 
 const Home = () => {
   const { t } = useTranslation('all')
@@ -76,7 +73,7 @@ const Home = () => {
 
               if (isContinue) {
                 axios
-                  .post(`${publicRuntimeConfig.API_URL}/urls`, null, {
+                  .post(`${settings.main.API}/urls`, null, {
                     params: data
                   })
                   .then((res) => {

@@ -1,11 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash, faChartPie, faCopy } from '@fortawesome/free-solid-svg-icons'
+import { settings } from '../../data/settings'
 import { ads } from '../../data/ads'
 import useTranslation from 'next-translate/useTranslation'
-import getConfig from 'next/config'
 import React from 'react'
-
-const { publicRuntimeConfig } = getConfig()
 
 const Shortened = ({ title, data, advertising }) => {
   const { t } = useTranslation('ads')
@@ -78,13 +76,13 @@ const Shortened = ({ title, data, advertising }) => {
               </div>
               <div className="shortened-button-group">
                 <a
-                  href={`${publicRuntimeConfig.SITE_URL}/delete/${item.url_delete}`}
+                  href={`${settings.main.URL}/delete/${item.url_delete}`}
                   className="shortened-button"
                 >
                   <FontAwesomeIcon icon={faTrash} className="w-4 h-4" />
                 </a>
                 <a
-                  href={`${publicRuntimeConfig.SITE_URL}/statistics/${item.url_slug}`}
+                  href={`${settings.main.URL}/statistics/${item.url_slug}`}
                   className="shortened-button"
                 >
                   <FontAwesomeIcon icon={faChartPie} className="w-4 h-4" />
