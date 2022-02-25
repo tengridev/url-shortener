@@ -17,7 +17,7 @@ const Home = () => {
   const [lsShortenedData, setLsShortenedData] = useState(false)
 
   useEffect(() => {
-    if (storage.get('shortened'))
+    if (storage.get('shortened') && storage.get('shortened').length > 0)
       setLsShortenedData(storage.get('shortened').reverse())
   }, [])
 

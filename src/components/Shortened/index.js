@@ -9,6 +9,7 @@ import { settings } from '../../data/settings'
 import { ads } from '../../data/ads'
 import useTranslation from 'next-translate/useTranslation'
 import React, { useState } from 'react'
+import Link from 'next/link'
 
 const Shortened = ({ title, data, advertising }) => {
   const { t } = useTranslation('ads')
@@ -24,31 +25,30 @@ const Shortened = ({ title, data, advertising }) => {
             <div className="shortened-ads">{t('shortened-ads')}</div>
             <div className="shortened-urls">
               <p className="shortened-short">
-                <a
-                  href={find.short.href}
-                  title={find.short.title}
-                  rel={find.short.rel}
-                >
-                  {find.short.text}
-                </a>
+                <Link href={find.short.href}>
+                  <a title={find.short.title} rel={find.short.rel}>
+                    {find.short.text}
+                  </a>
+                </Link>
               </p>
+
               <p className="shortened-long">
-                <a
-                  href={find.long.href}
-                  title={find.long.title}
-                  rel={find.long.rel}
-                >
-                  {find.long.text}
-                </a>
+                <Link href={find.long.href}>
+                  <a title={find.long.title} rel={find.long.rel}>
+                    {find.long.text}
+                  </a>
+                </Link>
               </p>
             </div>
             <div className="shortened-button-group">
               <button type="button" className="shortened-button">
                 <FontAwesomeIcon icon={faTrash} className="w-4 h-4" />
               </button>
+
               <button type="button" className="shortened-button">
                 <FontAwesomeIcon icon={faChartPie} className="w-4 h-4" />
               </button>
+
               <button type="button" className="shortened-button">
                 <FontAwesomeIcon icon={faCopy} className="w-4 h-4" />
               </button>
@@ -72,27 +72,57 @@ const Shortened = ({ title, data, advertising }) => {
             <div className="shortened-item">
               <div className="shortened-urls">
                 <p className="shortened-short">
-                  <a href={item.url_short}>{item.url_short}</a>
+                  <Link
+                    href={
+                      item.url_service === settings.main.parse.hostname
+                        ? {
+                            pathname: '/[slug]',
+                            query: { slug: item.url_slug }
+                          }
+                        : item.url_short
+                    }
+                  >
+                    <a>{item.url_short}</a>
+                  </Link>
                 </p>
+
                 <p className="shortened-long">
-                  <a href={item.url_long} rel="nofollow">
-                    {item.url_long}
-                  </a>
+                  <Link href={item.url_long}>
+                    <a rel="nofollow">{item.url_long}</a>
+                  </Link>
                 </p>
               </div>
               <div className="shortened-button-group">
-                <a
-                  href={`${settings.main.URL}/delete/${item.url_delete}`}
-                  className="shortened-button"
+                <Link
+                  href={
+                    item.url_service === settings.main.parse.hostname
+                      ? {
+                          pathname: '/delete/[delete]',
+                          query: { delete: item.url_delete }
+                        }
+                      : `https://${item.url_service}/delete/${item.url_delete}`
+                  }
                 >
-                  <FontAwesomeIcon icon={faTrash} className="w-4 h-4" />
-                </a>
-                <a
-                  href={`${settings.main.URL}/statistics/${item.url_slug}`}
-                  className="shortened-button"
+                  <a className="shortened-button">
+                    <FontAwesomeIcon icon={faTrash} className="w-4 h-4" />
+                  </a>
+                </Link>
+
+                <Link
+                  href={
+                    item.url_service === settings.main.parse.hostname
+                      ? {
+                          pathname: '/statistics/[slug]',
+                          query: { slug: item.url_slug }
+                        }
+                      : `https://${item.url_service}/statistics/${item.url_slug}`
+                  }
                 >
-                  <FontAwesomeIcon icon={faChartPie} className="w-4 h-4" />
-                </a>
+                  <a className="shortened-button">
+                    <FontAwesomeIcon icon={faChartPie} className="w-4 h-4" />
+                  </a>
+                </Link>
+
                 <button
                   type="button"
                   className="shortened-button"
