@@ -4,20 +4,5 @@
   "og-title": "URL Kısaltıcı",
   "og-description": "URL kısaltıcı, sahip olduğunuz uzun linkleri ücretsiz bir şekilde daha kısa ve akılda kalıcı linkler haline getirmenizi sağlar. Link kısaltma sonrası istatistikleri görüntüleyebilirsiniz.",
   "application-name": "URL Kısaltıcı",
-  "logo-text": "URL Kısaltıcı",
-  "long-url": "Uzun URL adresi",
-  "direct": "Direkt",
-  "timer": "Zamanlayıcı",
-  "short-address": "kisaadres",
-  "shorten-button": "Kısalt",
-  "error": "Hata",
-  "unknown-error": "Bilinmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
-  "empty-url": "URL adresi boş bırakılamaz.",
-  "invalid-url": "URL adresi geçersiz.",
-  "banned-slug": "Kullanmak istediğiniz kısa adres yasaklandı.",
-  "banned-domain": "URL adresinde kullanılan alan adı yasaklandı.",
-  "empty-service": "Servis boş bırakılamaz.",
-  "invalid-service": "Servis geçersiz.",
-  "shortened-result": "Sonuç",
-  "shortened-latest": "Son Kısaltılan URL Adresleri"
+  "logo-text": "URL Kısaltıcı"
 }

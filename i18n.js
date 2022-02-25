@@ -2,7 +2,9 @@ module.exports = {
   locales: ['tr'],
   defaultLocale: 'tr',
   pages: {
-    '*': ['all', 'links', 'features', 'ads', 'api']
+    '*': ['all', 'links', 'ads', 'api'],
+    '/': ['home', 'features'],
+    '/delete': ['delete']
   },
   loadLocaleFrom: (lang, ns) =>
     import(`./src/locales/${lang}/${ns}.json`).then((m) => m.default)

@@ -1,0 +1,11 @@
+{
+  "hash": "HASH: {{hash}}",
+  "delete-button": "Sil",
+  "empty-hash": "HASH alanı boş bırakılamaz.",
+  "invalid-hash": "HASH değeri geçersiz.",
+  "unknown-error": "Bilinmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
+  "success": "Başarılı",
+  "error": "Hata",
+  "info": "Bilgilendirme",
+  "hash-info": "HASH: Kısa URL adresi oluşturulduğunda, bu adresi silebilmeniz için size verilmiş olan şifrelenmiş bir anahtardır."
+}

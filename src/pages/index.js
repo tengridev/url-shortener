@@ -9,7 +9,8 @@ import Shortened from '../components/Shortened'
 import Alert from '../components/Alert'
 
 const Home = () => {
-  const { t } = useTranslation('all')
+  const { t } = useTranslation('home')
+
   const [loading, setLoading] = useState(false)
   const [shortAlert, setShortAlert] = useState(false)
   const [shortenedData, setShortenedData] = useState(false)

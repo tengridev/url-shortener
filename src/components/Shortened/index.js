@@ -105,18 +105,12 @@ const Shortened = ({ title, data, advertising }) => {
                     }, 1000)
                   }}
                 >
-                  {copied ? (
-                    copied === item.url_slug ? (
-                      <FontAwesomeIcon
-                        icon={faCheck}
-                        className="w-4 h-4 animate-pulse"
-                      />
-                    ) : (
-                      <FontAwesomeIcon icon={faCopy} className="w-4 h-4" />
-                    )
-                  ) : (
-                    <FontAwesomeIcon icon={faCopy} className="w-4 h-4" />
-                  )}
+                  <FontAwesomeIcon
+                    icon={copied && copied === item.url_slug ? faCheck : faCopy}
+                    className={`w-4 h-4 ${
+                      copied && copied === item.url_slug ? 'animate-pulse' : ''
+                    }`}
+                  />
                 </button>
               </div>
             </div>
