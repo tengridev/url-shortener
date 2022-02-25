@@ -1,12 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faTrash, faChartPie, faCopy } from '@fortawesome/free-solid-svg-icons'
+import {
+  faTrash,
+  faChartPie,
+  faCopy,
+  faCheck
+} from '@fortawesome/free-solid-svg-icons'
 import { settings } from '../../data/settings'
 import { ads } from '../../data/ads'
 import useTranslation from 'next-translate/useTranslation'
-import React from 'react'
+import React, { useState } from 'react'
 
 const Shortened = ({ title, data, advertising }) => {
   const { t } = useTranslation('ads')
+  const [copied, setCopied] = useState(false)
 
   const AdsComponent = (order) => {
     if (ads.shortened.length > 0) {
@@ -90,9 +96,27 @@ const Shortened = ({ title, data, advertising }) => {
                 <button
                   type="button"
                   className="shortened-button"
-                  onClick={() => navigator.clipboard.writeText(item.url_short)}
+                  onClick={() => {
+                    navigator.clipboard.writeText(item.url_short)
+                    setCopied(item.url_slug)
+
+                    setTimeout(() => {
+                      setCopied(false)
+                    }, 1000)
+                  }}
                 >
-                  <FontAwesomeIcon icon={faCopy} className="w-4 h-4" />
+                  {copied ? (
+                    copied === item.url_slug ? (
+                      <FontAwesomeIcon
+                        icon={faCheck}
+                        className="w-4 h-4 animate-pulse"
+                      />
+                    ) : (
+                      <FontAwesomeIcon icon={faCopy} className="w-4 h-4" />
+                    )
+                  ) : (
+                    <FontAwesomeIcon icon={faCopy} className="w-4 h-4" />
+                  )}
                 </button>
               </div>
             </div>

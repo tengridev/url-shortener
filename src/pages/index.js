@@ -1,17 +1,12 @@
 import { useEffect, useState } from 'react'
-import { regex } from '../lib/regex'
+import { regex } from '../utils/regex'
+import { storage } from '../utils/storage'
 import { settings } from '../data/settings'
-import ls from 'localstorage-slim'
 import axios from 'axios'
 import useTranslation from 'next-translate/useTranslation'
 import Features from '../components/Features'
 import Shortened from '../components/Shortened'
 import Alert from '../components/Alert'
-
-ls.config.encrypt = settings.localStorage.encrypt
-ls.config.ttl = settings.localStorage.ttl
-if (settings.localStorage.encrypt)
-  ls.config.secret = settings.localStorage.secret
 
 const Home = () => {
   const { t } = useTranslation('all')
@@ -21,9 +16,8 @@ const Home = () => {
   const [lsShortenedData, setLsShortenedData] = useState(false)
 
   useEffect(() => {
-    if (ls.get('shortened')) {
-      setLsShortenedData(ls.get('shortened').reverse())
-    }
+    if (storage.get('shortened'))
+      setLsShortenedData(storage.get('shortened').reverse())
   }, [])
 
   const shortenURL = (event) => {
@@ -81,7 +75,7 @@ const Home = () => {
                       setLoading(false)
                       setShortenedData([res.data])
 
-                      const lsShortened = ls.get('shortened')
+                      const lsShortened = storage.get('shortened')
                       if (lsShortened) {
                         if (
                           lsShortened.length === settings.latestShortened.length
@@ -89,11 +83,11 @@ const Home = () => {
                           lsShortened.splice(0, 1)
                         }
 
-                        ls.set('shortened', [...lsShortened, res.data])
+                        storage.set('shortened', [...lsShortened, res.data])
                       } else {
-                        ls.set('shortened', [res.data])
+                        storage.set('shortened', [res.data])
                       }
-                      setLsShortenedData(ls.get('shortened').reverse())
+                      setLsShortenedData(storage.get('shortened').reverse())
                     } else {
                       setLoading(false)
                       setShortAlert({
