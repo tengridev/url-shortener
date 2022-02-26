@@ -62,7 +62,7 @@ body {
     @apply col-start-2 col-span-10 whitespace-nowrap overflow-hidden;
   }
 
-  &-slug {
+  &-short {
     @apply font-semibold text-2xl md:text-3xl mb-6;
   }
 
@@ -204,7 +204,7 @@ body {
     }
 
     &-item {
-      @apply col-span-12 sm:col-span-6 md:col-span-4 p-5 flex flex-row justify-between items-center rounded border border-neutral-200 dark:border-zinc-800;
+      @apply col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-4 p-5 flex flex-row justify-between items-center rounded border border-neutral-200 dark:border-zinc-800;
 
       &:nth-child(1) .statistics-icon {
         @apply bg-indigo-400/20 text-indigo-400/60 dark:bg-indigo-400/5 dark:text-indigo-400/20;
@@ -232,7 +232,7 @@ body {
     }
 
     &-icon {
-      @apply w-14 h-14 p-0 flex justify-center items-center text-xs rounded-full;
+      @apply w-[4.5rem] h-[4.5rem] p-0 flex justify-center items-center text-xs rounded-full;
     }
 
     &-text {

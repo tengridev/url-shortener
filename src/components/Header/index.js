@@ -7,8 +7,9 @@ import ThemeSwitcher from '../ThemeSwitcher'
 import Link from 'next/link'
 
 const Header = () => {
-  const [open, setOpen] = useState(false)
   const { t } = useTranslation('links')
+
+  const [open, setOpen] = useState(false)
 
   const logoText = t('all:logo-text').split(' ')
 
