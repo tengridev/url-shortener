@@ -6,7 +6,7 @@ import Alert from '../../components/Alert'
 import axios from 'axios'
 import useTranslation from 'next-translate/useTranslation'
 
-const Delete = ({ data }) => {
+const DeletePage = ({ data }) => {
   const { t } = useTranslation('delete')
 
   const [loading, setLoading] = useState(false)
@@ -125,4 +125,4 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default Delete
+export default DeletePage

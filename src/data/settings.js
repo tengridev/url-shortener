@@ -74,6 +74,14 @@ export const settings = {
     secret: 'c439a6d5249da1838bc326434ff2d0f6',
     ttl: 60 * 60 * 24 * 365
   },
+  swr: {
+    statistics: {
+      revalidateIfStale: false,
+      revalidateOnFocus: true,
+      revalidateOnReconnect: true,
+      refreshInterval: 15000
+    }
+  },
   keys: {
     signature: 'c439a6d5249da1838bc326434ff2d0f6'
   }

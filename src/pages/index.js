@@ -8,7 +8,7 @@ import Features from '../components/Features'
 import Shortened from '../components/Shortened'
 import Alert from '../components/Alert'
 
-const Home = () => {
+const HomePage = () => {
   const { t } = useTranslation('home')
 
   const [loading, setLoading] = useState(false)
@@ -224,4 +224,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePage

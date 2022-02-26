@@ -6,5 +6,7 @@
   "last-year": "Bu yıl",
   "all": "Tüm",
   "urls": "Bağlantılar",
-  "visits": "Ziyaretler"
+  "visits": "Ziyaretler",
+  "error": "Hata",
+  "unknown-error": "Bilinmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin."
 }
