@@ -116,10 +116,19 @@ const DeletePage = ({ data }) => {
 }
 
 export async function getServerSideProps(context) {
+  const hash = context.params.hash.replace(regex.replace.md5, '')
+
   return {
+    redirect:
+      hash.length > 0
+        ? false
+        : {
+            permanent: false,
+            destination: '/delete'
+          },
     props: {
       data: {
-        hash: context.params.hash.replace(regex.replace.md5, '')
+        hash
       }
     }
   }
