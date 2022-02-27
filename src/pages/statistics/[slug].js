@@ -15,32 +15,61 @@ const StatisticsPage = ({ serverSide }) => {
   const { t } = useTranslation('statistics')
 
   const { data, error } = useSWR(
-    serverSide.error || serverSide.data?.error
-      ? null
-      : `${settings.main.API}/statistics/visits/${serverSide.data.url_id}`,
+    serverSide.data
+      ? `${settings.main.API}/statistics/visits/${serverSide.data.url_id}`
+      : null,
     fetcher,
     settings.swr.statistics
   )
 
-  if (serverSide.error) {
-    return (
-      <>
-        <NextSeo
-          title={t('title-slug', {
+  return (
+    <>
+      <NextSeo
+        title={t('title-slug', {
+          siteTitle: t('all:site-title'),
+          slug: serverSide.slug
+        })}
+        canonical={`${settings.main.URL}/statistics/${serverSide.slug}`}
+        openGraph={{
+          url: `${settings.main.URL}/statistics/${serverSide.slug}`,
+          title: t('og-title-slug', {
             siteTitle: t('all:site-title'),
             slug: serverSide.slug
-          })}
-          canonical={`${settings.main.URL}/statistics/${serverSide.slug}`}
-          openGraph={{
-            url: `${settings.main.URL}/statistics/${serverSide.slug}`,
-            title: t('og-title-slug', {
-              siteTitle: t('all:site-title'),
-              slug: serverSide.slug
-            }),
-            description: t('all:og-description'),
-            site_name: t('all:site-title')
-          }}
-        />
+          }),
+          description: t('all:og-description'),
+          site_name: t('all:site-title')
+        }}
+      />
+
+      {!serverSide.error ? (
+        <>
+          <Subheader data={serverSide.data} />
+
+          <div className="main">
+            {!error ? (
+              !data?.error ? (
+                <Statistics
+                  title={{ urls: false, visits: t('visits') }}
+                  data={data ? data : false}
+                  loading={data ? false : 'visits'}
+                />
+              ) : (
+                <Alert
+                  title={t('error')}
+                  text={t(`api:error.${data.error.key.replaceAll('_', '-')}`)}
+                  className="alert-danger"
+                />
+              )
+            ) : (
+              <Alert
+                title={t('error')}
+                text={t('unknown-error')}
+                className="alert-danger"
+              />
+            )}
+          </div>
+        </>
+      ) : (
         <div className="main">
           <Alert
             title={t('error')}
@@ -48,85 +77,9 @@ const StatisticsPage = ({ serverSide }) => {
             className="alert-danger"
           />
         </div>
-      </>
-    )
-  } else if (serverSide.data?.error) {
-    return (
-      <>
-        <NextSeo
-          title={t('title-slug', {
-            siteTitle: t('all:site-title'),
-            slug: serverSide.slug
-          })}
-          canonical={`${settings.main.URL}/statistics/${serverSide.slug}`}
-          openGraph={{
-            url: `${settings.main.URL}/statistics/${serverSide.slug}`,
-            title: t('og-title-slug', {
-              siteTitle: t('all:site-title'),
-              slug: serverSide.slug
-            }),
-            description: t('all:og-description'),
-            site_name: t('all:site-title')
-          }}
-        />
-        <div className="main">
-          <Alert
-            title={t('error')}
-            text={t(
-              `api:error.${serverSide.data.error.key.replace(/_/g, '-')}`
-            )}
-            className="alert-danger"
-          />
-        </div>
-      </>
-    )
-  } else {
-    return (
-      <>
-        <NextSeo
-          title={t('title-slug', {
-            siteTitle: t('all:site-title'),
-            slug: serverSide.slug
-          })}
-          canonical={`${settings.main.URL}/statistics/${serverSide.slug}`}
-          openGraph={{
-            url: `${settings.main.URL}/statistics/${serverSide.slug}`,
-            title: t('og-title-slug', {
-              siteTitle: t('all:site-title'),
-              slug: serverSide.slug
-            }),
-            description: t('all:og-description'),
-            site_name: t('all:site-title')
-          }}
-        />
-        <Subheader data={serverSide.data} />
-
-        <div className="main">
-          {!error ? (
-            !data?.error ? (
-              <Statistics
-                title={{ urls: false, visits: t('visits') }}
-                data={data ? data : false}
-                loading={data ? false : 'visits'}
-              />
-            ) : (
-              <Alert
-                title={t('error')}
-                text={t(`api:error.${data.error.key.replaceAll('_', '-')}`)}
-                className="alert-danger"
-              />
-            )
-          ) : (
-            <Alert
-              title={t('error')}
-              text={t('unknown-error')}
-              className="alert-danger"
-            />
-          )}
-        </div>
-      </>
-    )
-  }
+      )}
+    </>
+  )
 }
 
 export async function getServerSideProps(context) {
@@ -141,12 +94,24 @@ export async function getServerSideProps(context) {
     await axios
       .get(`${settings.main.API}/statistics/urls/${hash}`)
       .then((res) => {
-        result = {
-          props: {
-            serverSide: {
-              slug,
-              data: res.data,
-              error: false
+        if (!res.data.error) {
+          result = {
+            props: {
+              serverSide: {
+                slug,
+                data: res.data,
+                error: false
+              }
+            }
+          }
+        } else {
+          result = {
+            props: {
+              serverSide: {
+                slug,
+                data: false,
+                error: `api:error.${res.data.error.key.replace(/_/g, '-')}`
+              }
             }
           }
         }
