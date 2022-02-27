@@ -1,4 +1,17 @@
 export const ads = {
+  txt: [
+    {
+      domain: 'google.com',
+      publisher: 'pub-0000000000000000',
+      type: 'DIRECT'
+    },
+    {
+      domain: 'google.com1',
+      publisher: 'pub-00000000000000002',
+      type: 'DIRECT3',
+      authority: 'f08c47fec0942fa04'
+    }
+  ],
   shortened: [
     {
       order: 1,

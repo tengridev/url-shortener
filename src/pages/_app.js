@@ -12,7 +12,7 @@ config.autoAddCss = false
 
 function App({ Component, pageProps }) {
   const { asPath, locales } = useRouter()
-  const { t, lang } = useTranslation('all')
+  const { t } = useTranslation('all')
 
   const verifications = []
   settings.searchEngines.google.verification &&
@@ -117,7 +117,7 @@ function App({ Component, pageProps }) {
           },
           {
             rel: 'manifest',
-            href: `${settings.main.URL}/manifest/${lang}.json`
+            href: `${settings.main.URL}/manifest.json`
           }
         ]}
         languageAlternates={languages}
