@@ -1,3 +1,4 @@
+import { NextSeo } from 'next-seo'
 import { useState } from 'react'
 import { regex } from '../../utils/regex'
 import { storage } from '../../utils/storage'
@@ -79,39 +80,54 @@ const DeletePage = ({ data }) => {
   }
 
   return (
-    <div className="main">
-      <div className="delete">
-        <form onSubmit={deleteURL}>
-          <input
-            type="text"
-            name="hash"
-            placeholder={t('hash', {
-              hash: data.hash
-            })}
-            defaultValue={data.hash}
-            className="delete-hash"
-            required
+    <>
+      <NextSeo
+        title={t('title', { siteTitle: t('all:site-title'), hash: data.hash })}
+        canonical={`${settings.main.URL}/delete/${data.hash}`}
+        openGraph={{
+          url: `${settings.main.URL}/delete/${data.hash}`,
+          title: t('og-title', {
+            siteTitle: t('all:site-title'),
+            hash: data.hash
+          }),
+          description: t('all:og-description'),
+          site_name: t('all:site-title')
+        }}
+      />
+      <div className="main">
+        <div className="delete">
+          <form onSubmit={deleteURL}>
+            <input
+              type="text"
+              name="hash"
+              placeholder={t('hash', {
+                hash: data.hash
+              })}
+              defaultValue={data.hash}
+              className="delete-hash"
+              required
+            />
+
+            <button
+              type="submit"
+              className={`delete-submit ${loading ? 'animate-pulse' : ''}`}
+            >
+              {t('delete-button')}
+            </button>
+          </form>
+        </div>
+
+        {deleteAlert ? (
+          <Alert
+            title={deleteAlert.title}
+            text={deleteAlert.text}
+            className={`mt-20 ${deleteAlert.className}`}
           />
-
-          <button
-            type="submit"
-            className={`delete-submit ${loading ? 'animate-pulse' : ''}`}
-          >
-            {t('delete-button')}
-          </button>
-        </form>
+        ) : (
+          <Alert title={t('info')} text={t('hash-info')} className={`mt-20`} />
+        )}
       </div>
-
-      {deleteAlert ? (
-        <Alert
-          title={deleteAlert.title}
-          text={deleteAlert.text}
-          className={`mt-20 ${deleteAlert.className}`}
-        />
-      ) : (
-        <Alert title={t('info')} text={t('hash-info')} className={`mt-20`} />
-      )}
-    </div>
+    </>
   )
 }
 

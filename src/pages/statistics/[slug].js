@@ -1,3 +1,4 @@
+import { NextSeo } from 'next-seo'
 import { regex } from '../../utils/regex'
 import { settings } from '../../data/settings'
 import Subheader from '../../components/Subheader'
@@ -13,35 +14,91 @@ const fetcher = (url) => axios.get(url).then((res) => res.data)
 const StatisticsPage = ({ serverSide }) => {
   const { t } = useTranslation('statistics')
 
+  const { data, error } = useSWR(
+    serverSide.error || serverSide.data?.error
+      ? null
+      : `${settings.main.API}/statistics/visits/${serverSide.data.url_id}`,
+    fetcher,
+    settings.swr.statistics
+  )
+
   if (serverSide.error) {
     return (
-      <div className="main">
-        <Alert
-          title={t('error')}
-          text={t(serverSide.error)}
-          className="alert-danger"
+      <>
+        <NextSeo
+          title={t('title-slug', {
+            siteTitle: t('all:site-title'),
+            slug: serverSide.slug
+          })}
+          canonical={`${settings.main.URL}/statistics/${serverSide.slug}`}
+          openGraph={{
+            url: `${settings.main.URL}/statistics/${serverSide.slug}`,
+            title: t('og-title-slug', {
+              siteTitle: t('all:site-title'),
+              slug: serverSide.slug
+            }),
+            description: t('all:og-description'),
+            site_name: t('all:site-title')
+          }}
         />
-      </div>
+        <div className="main">
+          <Alert
+            title={t('error')}
+            text={t(serverSide.error)}
+            className="alert-danger"
+          />
+        </div>
+      </>
     )
   } else if (serverSide.data?.error) {
     return (
-      <div className="main">
-        <Alert
-          title={t('error')}
-          text={t(`api:error.${serverSide.data.error.key.replace(/_/g, '-')}`)}
-          className="alert-danger"
+      <>
+        <NextSeo
+          title={t('title-slug', {
+            siteTitle: t('all:site-title'),
+            slug: serverSide.slug
+          })}
+          canonical={`${settings.main.URL}/statistics/${serverSide.slug}`}
+          openGraph={{
+            url: `${settings.main.URL}/statistics/${serverSide.slug}`,
+            title: t('og-title-slug', {
+              siteTitle: t('all:site-title'),
+              slug: serverSide.slug
+            }),
+            description: t('all:og-description'),
+            site_name: t('all:site-title')
+          }}
         />
-      </div>
+        <div className="main">
+          <Alert
+            title={t('error')}
+            text={t(
+              `api:error.${serverSide.data.error.key.replace(/_/g, '-')}`
+            )}
+            className="alert-danger"
+          />
+        </div>
+      </>
     )
   } else {
-    const { data, error } = useSWR(
-      `${settings.main.API}/statistics/visits/${serverSide.data.url_id}`,
-      fetcher,
-      settings.swr.statistics
-    )
-
     return (
       <>
+        <NextSeo
+          title={t('title-slug', {
+            siteTitle: t('all:site-title'),
+            slug: serverSide.slug
+          })}
+          canonical={`${settings.main.URL}/statistics/${serverSide.slug}`}
+          openGraph={{
+            url: `${settings.main.URL}/statistics/${serverSide.slug}`,
+            title: t('og-title-slug', {
+              siteTitle: t('all:site-title'),
+              slug: serverSide.slug
+            }),
+            description: t('all:og-description'),
+            site_name: t('all:site-title')
+          }}
+        />
         <Subheader data={serverSide.data} />
 
         <div className="main">
@@ -87,6 +144,7 @@ export async function getServerSideProps(context) {
         result = {
           props: {
             serverSide: {
+              slug,
               data: res.data,
               error: false
             }
@@ -97,6 +155,7 @@ export async function getServerSideProps(context) {
         result = {
           props: {
             serverSide: {
+              slug,
               data: false,
               error: 'unknown-error'
             }

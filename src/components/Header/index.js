@@ -19,7 +19,9 @@ const Header = () => {
         <Link href={`/`}>
           <a className="text-2xl">
             <span className="font-semibold">{logoText[0]}</span>
-            <span className="font-extralight">{logoText[1]}</span>
+            {logoText[1] && (
+              <span className="font-extralight">{logoText[1]}</span>
+            )}
           </a>
         </Link>
       </div>
@@ -31,6 +33,7 @@ const Header = () => {
               <a
                 title={t(`navigation.header.${item.title}`)}
                 className="navbar-item"
+                onClick={() => setOpen(!open)}
               >
                 {t(`navigation.header.${item.title}`)}
               </a>

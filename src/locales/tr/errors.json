@@ -1,0 +1,8 @@
+{
+  "error-404": {
+    "title": "404 - {{siteTitle}}",
+    "og-title": "404 - {{siteTitle}}",
+    "alert-title": "404",
+    "alert-text": "Ulaşmaya çalıştığınız sayfa bulunamadı ya da silindi."
+  }
+}

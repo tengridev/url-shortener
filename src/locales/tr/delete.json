@@ -1,4 +1,8 @@
 {
+  "title": "Sil - {{siteTitle}}",
+  "og-title": "Sil - {{siteTitle}}",
+  "title-slug": "Sil - {{siteTitle}}",
+  "og-title-slug": "Sil - {{siteTitle}}",
   "hash": "HASH: {{hash}}",
   "delete-button": "Sil",
   "empty-hash": "HASH alanı boş bırakılamaz.",

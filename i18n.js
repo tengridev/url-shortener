@@ -2,7 +2,7 @@ module.exports = {
   locales: ['tr'],
   defaultLocale: 'tr',
   pages: {
-    '*': ['all', 'links', 'ads', 'api'],
+    '*': ['all', 'errors', 'links', 'ads', 'api'],
     '/': ['home', 'features'],
     '/delete': ['delete'],
     '/delete/[hash]': ['delete'],

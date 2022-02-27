@@ -17,7 +17,7 @@ const HomePage = () => {
   const [lsShortenedData, setLsShortenedData] = useState(false)
 
   useEffect(() => {
-    if (storage.get('shortened') && storage.get('shortened').length > 0)
+    if (storage.get('shortened')?.length > 0)
       setLsShortenedData(storage.get('shortened').reverse())
   }, [])
 
