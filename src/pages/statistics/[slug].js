@@ -87,6 +87,15 @@ export async function getServerSideProps(context) {
   let result = false
 
   if (slug.length > 0) {
+    result = {
+      props: {
+        serverSide: {
+          slug,
+          data: false,
+          error: false
+        }
+      }
+    }
     const hash = md5(
       `${settings.keys.signature}:${settings.main.parse.hostname}:${slug}`
     ).toString()
@@ -95,37 +104,16 @@ export async function getServerSideProps(context) {
       .get(`${settings.main.API}/statistics/urls/${hash}`)
       .then((res) => {
         if (!res.data.error) {
-          result = {
-            props: {
-              serverSide: {
-                slug,
-                data: res.data,
-                error: false
-              }
-            }
-          }
+          result.props.serverSide.data = res.data
         } else {
-          result = {
-            props: {
-              serverSide: {
-                slug,
-                data: false,
-                error: `api:error.${res.data.error.key.replace(/_/g, '-')}`
-              }
-            }
-          }
+          result.props.serverSide.error = `api:error.${res.data.error.key.replace(
+            /_/g,
+            '-'
+          )}`
         }
       })
       .catch(() => {
-        result = {
-          props: {
-            serverSide: {
-              slug,
-              data: false,
-              error: 'unknown-error'
-            }
-          }
-        }
+        result.props.serverSide.error = 'unknown-error'
       })
   } else {
     result = {
