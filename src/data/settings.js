@@ -22,7 +22,10 @@ export const settings = {
     }
   },
   redirects: {
-    default: ['direct', 'timer']
+    default: ['direct', 'timer'],
+    timer: {
+      countdown: 15
+    }
   },
   services: {
     default: ['urlshortener.app', 'tr.radio.fm', 'biolink.im'],
@@ -62,12 +65,16 @@ export const settings = {
       'login',
       'logout',
       'delete',
-      'statistics'
+      'statistics',
+      'static',
+      'manifest',
+      'assets',
+      'img'
     ]
   },
   latestShortened: {
     active: true,
-    length: 25
+    limit: 50
   },
   localStorage: {
     encrypt: true,
@@ -79,7 +86,7 @@ export const settings = {
       revalidateIfStale: false,
       revalidateOnFocus: true,
       revalidateOnReconnect: true,
-      refreshInterval: 15000
+      refreshInterval: 1000 * 15
     }
   },
   keys: {

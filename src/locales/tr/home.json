@@ -1,4 +1,6 @@
 {
+  "title-slug": "{{slug}} - {{siteTitle}}",
+  "og-title-slug": "{{slug}} - {{siteTitle}}",
   "long-url": "Uzun URL adresi",
   "direct": "Direkt",
   "timer": "Zamanlayıcı",

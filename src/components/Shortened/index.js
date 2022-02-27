@@ -16,7 +16,7 @@ const Shortened = ({ title, data, advertising }) => {
   const [copied, setCopied] = useState(false)
 
   const AdsComponent = (order) => {
-    if (ads.shortened.length > 0) {
+    if (ads.shortened?.length > 0) {
       const find = ads.shortened.find((item) => item.order === order.order)
 
       if (find) {

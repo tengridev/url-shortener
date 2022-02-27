@@ -79,7 +79,7 @@ const HomePage = () => {
                       const lsShortened = storage.get('shortened')
                       if (lsShortened) {
                         if (
-                          lsShortened.length === settings.latestShortened.length
+                          lsShortened.length === settings.latestShortened.limit
                         ) {
                           lsShortened.splice(0, 1)
                         }

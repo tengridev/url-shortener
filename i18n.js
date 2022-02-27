@@ -4,6 +4,7 @@ module.exports = {
   pages: {
     '*': ['all', 'errors', 'links', 'ads', 'api'],
     '/': ['home', 'features'],
+    '/[slug]': ['home'],
     '/delete': ['delete'],
     '/delete/[hash]': ['delete'],
     '/statistics': ['statistics'],
