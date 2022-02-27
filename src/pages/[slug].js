@@ -15,21 +15,25 @@ const SlugPage = ({ serverSide }) => {
   const router = useRouter()
 
   const [countdown, setCountdown] = useState(settings.redirects.timer.countdown)
-  const [redirected, setRedirected] = useState(false)
 
   useEffect(() => {
-    setInterval(() => {
+    let redirected = false
+
+    const interval = setInterval(() => {
       if (document.hasFocus()) {
         if (countdown > 0) {
           setCountdown(--countdown)
         } else {
           if (!redirected && router) {
-            setRedirected(true)
+            redirected = true
+
             router.push(serverSide.data.url_long)
           }
         }
       }
     }, 1000)
+
+    return () => clearInterval(interval)
   }, [])
 
   return (
