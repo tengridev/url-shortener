@@ -3,10 +3,10 @@ import { sitemap } from '../../data/sitemap'
 import moment from 'moment'
 import axios from 'axios'
 
-const SitemapIndexPage = () => {}
+const SitemapIndex = () => {}
 
 export async function getServerSideProps(context) {
-  let content = `<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="${settings.main.URL}/sitemap/xsl/main.xsl"?>
+  let content = `<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="${settings.main.URL}/sitemap/xsl/main"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`
 
   if (sitemap.active.short || sitemap.active.statistics) {
@@ -24,7 +24,7 @@ export async function getServerSideProps(context) {
 
           if (sitemap.active.short) {
             short += `    <sitemap>
-        <loc>${settings.main.URL}/sitemap/short-sitemap/${i}.xml</loc>
+        <loc>${settings.main.URL}/sitemap/short-sitemap/${i}</loc>
         <lastmod>${moment
           .utc(
             res.data.sitemap.data[res.data.sitemap.data.length - 1].created_at
@@ -35,7 +35,7 @@ export async function getServerSideProps(context) {
 
           if (sitemap.active.statistics) {
             statistics += `    <sitemap>
-        <loc>${settings.main.URL}/sitemap/statistics-sitemap/${i}.xml</loc>
+        <loc>${settings.main.URL}/sitemap/statistics-sitemap/${i}</loc>
         <lastmod>${moment
           .utc(
             res.data.sitemap.data[res.data.sitemap.data.length - 1].created_at
@@ -71,4 +71,4 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default SitemapIndexPage
+export default SitemapIndex

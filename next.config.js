@@ -8,7 +8,7 @@ const nextConfig = {
     return [
       {
         source: '/sitemap.xml',
-        destination: '/sitemap/sitemap_index.xml',
+        destination: '/sitemap',
         permanent: true
       }
     ]

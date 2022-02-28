@@ -17,24 +17,26 @@ const SlugPage = ({ serverSide }) => {
   const [countdown, setCountdown] = useState(settings.redirects.timer.countdown)
 
   useEffect(() => {
-    let redirected = false
+    if (serverSide.data) {
+      let redirected = false
 
-    const interval = setInterval(() => {
-      if (document.hasFocus()) {
-        if (countdown > 0) {
-          setCountdown(--countdown)
-        } else {
-          if (!redirected && router) {
-            redirected = true
+      const interval = setInterval(() => {
+        if (document.hasFocus()) {
+          if (countdown > 0) {
+            setCountdown(--countdown)
+          } else {
+            if (!redirected && router) {
+              redirected = true
 
-            router.push(serverSide.data.url_long)
+              router.push(serverSide.data.url_long)
+            }
           }
         }
-      }
-    }, 1000)
+      }, 1000)
 
-    return () => clearInterval(interval)
-  }, [])
+      return () => clearInterval(interval)
+    }
+  }, [countdown, router, serverSide])
 
   return (
     <>

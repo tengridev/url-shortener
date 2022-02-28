@@ -17,7 +17,7 @@ export async function getServerSideProps(context) {
   const sitemaps =
     robots.sitemaps?.length > 0
       ? robots.sitemaps
-      : [`${settings.main.URL}/sitemap/sitemap_index.xml`]
+      : [`${settings.main.URL}/sitemap`]
 
   policies.map((item) => {
     content += `User-agent: ${item.userAgent}\n`

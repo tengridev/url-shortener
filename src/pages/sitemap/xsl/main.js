@@ -1,7 +1,7 @@
 import { settings } from '../../../data/settings'
 import getT from 'next-translate/getT'
 
-const MainXSLPage = () => {}
+const MainXSL = () => {}
 
 export async function getServerSideProps(context) {
   const t = await getT(context.locale, 'sitemap')
@@ -116,9 +116,7 @@ export async function getServerSideProps(context) {
                   })}
                 </p>
                 <p class="expl">
-                  <a href="${
-                    settings.main.URL
-                  }/sitemap/sitemap_index.xml">&#8592; ${t(
+                  <a href="${settings.main.URL}/sitemap">&#8592; ${t(
     'xsl.sitemap-index'
   )}</a>
                 </p>
@@ -208,11 +206,11 @@ export async function getServerSideProps(context) {
                         '<xsl:value-of select="count(sitemap:urlset/sitemap:url)"/>'
                     })}
                   </p>
-                  <p class="expl"><a href="${
-                    settings.main.URL
-                  }/sitemap/sitemap_index.xml">&#8592; ${t(
+                  <p class="expl">
+                    <a href="${settings.main.URL}/sitemap">&#8592; ${t(
     'xsl.sitemap-index'
-  )}</a></p>
+  )}</a>
+                  </p>
                   <table id="sitemap" cellpadding="3">
                     <thead>
                       <tr>
@@ -264,4 +262,4 @@ export async function getServerSideProps(context) {
   }
 }
 
-export default MainXSLPage
+export default MainXSL
