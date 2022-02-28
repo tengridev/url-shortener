@@ -1,0 +1,25 @@
+{
+  "xsl": {
+    "site-title": "URL Shortener",
+    "locations-sitemap": "Locations Sitemap",
+    "xml-sitemap": "XML Sitemap",
+    "sitemap-index": "Sitemap Index",
+    "kml-title": "KML File",
+    "kml-text": "Learn more about <a href='https://developers.google.com/kml/documentation/' target='_blank'>KML File</a>.",
+    "kml-count": "This KML file contains {{count}} Locations.",
+    "name": "Name",
+    "address": "Address",
+    "phone-number": "Phone number",
+    "latitude": "Latitude",
+    "longitude": "Longitude",
+    "xml-title": "XML Sitemap",
+    "xml-text": "Learn more about <a href='http://sitemaps.org' target='_blank'>XML Sitemaps</a>.",
+    "xml-index-count": "This XML Sitemap Index file contains {{count}} sitemaps.",
+    "sitemap": "Sitemap",
+    "last-modified": "Last Modified",
+    "xml-count": "This XML Sitemap contains {{count}} URLs.",
+    "url": "URL",
+    "images": "Images",
+    "last-modification-time": "Last Modification Time"
+  }
+}

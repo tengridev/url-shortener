@@ -4,6 +4,15 @@ const nextTranslate = require('next-translate')
 const withPWA = require('next-pwa')
 
 const nextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/sitemap.xml',
+        destination: '/sitemap/sitemap_index.xml',
+        permanent: true
+      }
+    ]
+  },
   pwa: {
     dest: 'public',
     disable: process.env.NODE_ENV === 'development',

@@ -18,10 +18,14 @@ const Header = () => {
       <div className="logo">
         <Link href={`/`}>
           <a className="text-2xl">
-            <span className="font-semibold">{logoText[0]}</span>
-            {logoText[1] && (
-              <span className="font-extralight">{logoText[1]}</span>
-            )}
+            {logoText.map((item, index) => (
+              <span
+                className={index === 0 ? 'font-semibold' : 'font-extralight'}
+                key={index}
+              >
+                {item}
+              </span>
+            ))}
           </a>
         </Link>
       </div>
