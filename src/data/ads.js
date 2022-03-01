@@ -2,30 +2,25 @@ export const ads = {
   txt: [
     {
       domain: 'google.com',
-      publisher: 'pub-0000000000000000',
-      type: 'DIRECT'
-    },
-    {
-      domain: 'google.com1',
-      publisher: 'pub-00000000000000002',
-      type: 'DIRECT3',
-      authority: 'f08c47fec0942fa04'
+      publisher: 'pub-6340868274776345',
+      type: 'DIRECT',
+      authority: 'f08c47fec0942fa0'
     }
   ],
   shortened: [
     {
-      order: 1,
+      order: 3,
       short: {
-        href: 'https://r10.net',
-        title: 'R10.NET',
+        href: 'https://urlshortener.app/whois',
+        title: 'WHOIS',
         rel: 'nofollow',
-        text: 'https://r10.net'
+        text: 'https://urlshortener.app/whois'
       },
       long: {
-        href: 'https://www.r10.net/profil/88155-muhammetdemirel.html',
-        title: 'Muhammet Demirel',
+        href: 'https://whois.tv.tr',
+        title: 'Whois Sorgulama',
         rel: 'nofollow',
-        text: 'https://www.r10.net/profil/88155-muhammetdemirel.html'
+        text: 'https://whois.tv.tr'
       }
     }
   ]

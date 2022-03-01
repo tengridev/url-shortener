@@ -116,9 +116,9 @@ export async function getServerSideProps(context) {
                   })}
                 </p>
                 <p class="expl">
-                  <a href="${settings.main.URL}/sitemap">&#8592; ${t(
-    'xsl.sitemap-index'
-  )}</a>
+                  <a href="${settings.main.URL}${
+    context.locale === context.defaultLocale ? '' : '/' + context.locale
+  }/sitemap">&#8592; ${t('xsl.sitemap-index')}</a>
                 </p>
                 <table id="sitemap" cellpadding="3">
                   <thead>
@@ -207,9 +207,9 @@ export async function getServerSideProps(context) {
                     })}
                   </p>
                   <p class="expl">
-                    <a href="${settings.main.URL}/sitemap">&#8592; ${t(
-    'xsl.sitemap-index'
-  )}</a>
+                    <a href="${settings.main.URL}${
+    context.locale === context.defaultLocale ? '' : '/' + context.locale
+  }/sitemap">&#8592; ${t('xsl.sitemap-index')}</a>
                   </p>
                   <table id="sitemap" cellpadding="3">
                     <thead>

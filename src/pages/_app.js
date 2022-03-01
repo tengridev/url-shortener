@@ -11,7 +11,7 @@ import '../styles/globals.css'
 config.autoAddCss = false
 
 function App({ Component, pageProps }) {
-  const { asPath, locales } = useRouter()
+  const { asPath, locales, defaultLocale } = useRouter()
   const { t } = useTranslation('all')
 
   const verifications = []
@@ -31,7 +31,7 @@ function App({ Component, pageProps }) {
       content: settings.searchEngines.bing.verification
     })
   const languages = locales.map((locale) => {
-    if (locale === 'tr') {
+    if (locale === defaultLocale) {
       return {
         key: locale,
         rel: 'alternate',

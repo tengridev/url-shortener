@@ -1,8 +1,8 @@
 {
   "title": "İstatistikler - {{siteTitle}}",
   "og-title": "İstatistikler - {{siteTitle}}",
-  "title-slug": "{{slug}} - İstatistikler - {{siteTitle}}",
-  "og-title-slug": "{{slug}} - İstatistikler - {{siteTitle}}",
+  "title-slug": "{{slug}} Bağlantısı için İstatistikler - {{siteTitle}}",
+  "og-title-slug": "{{slug}} Bağlantısı için İstatistikler - {{siteTitle}}",
   "today": "Bugün",
   "yesterday": "Dün",
   "last-week": "Bu hafta",

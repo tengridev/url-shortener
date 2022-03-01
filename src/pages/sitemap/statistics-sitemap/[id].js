@@ -13,7 +13,11 @@ export async function getServerSideProps(context) {
 
   let isNotFound = false
 
-  let content = `<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="${settings.main.URL}/sitemap/xsl/main"?>
+  let content = `<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="${
+    settings.main.URL
+  }${
+    context.locale === context.defaultLocale ? '' : '/' + context.locale
+  }/sitemap/xsl/main"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`
 
   if (sitemap.active.statistics) {
@@ -23,7 +27,11 @@ export async function getServerSideProps(context) {
         if (res.data.sitemap.data) {
           res.data.sitemap.data.map((item) => {
             content += `    <url>
-        <loc>${settings.main.URL}/statistics/${item.url_slug}</loc>
+        <loc>${settings.main.URL}${
+              context.locale === context.defaultLocale
+                ? ''
+                : '/' + context.locale
+            }/statistics/${item.url_slug}</loc>
         <lastmod>${moment
           .utc(item.created_at)
           .format('YYYY-MM-DDTHH:mm:ss+00:00')}</lastmod>

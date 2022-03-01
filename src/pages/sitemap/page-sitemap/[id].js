@@ -21,7 +21,11 @@ export async function getServerSideProps(context) {
 
   if (id <= 0 || id.length <= 0 || id > total) return { notFound: true }
 
-  let content = `<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="${settings.main.URL}/sitemap/xsl/main"?>
+  let content = `<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="${
+    settings.main.URL
+  }${
+    context.locale === context.defaultLocale ? '' : '/' + context.locale
+  }/sitemap/xsl/main"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd http://www.google.com/schemas/sitemap-image/1.1 http://www.google.com/schemas/sitemap-image/1.1/sitemap-image.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n`
 
   if (isContinue) {
@@ -33,7 +37,15 @@ export async function getServerSideProps(context) {
 
     for (i; i < count; i++) {
       content += `    <url>\n`
-      content += `        <loc>${sitemap.additionals.page[i].loc}</loc>\n`
+      content += `        <loc>${
+        regex.url.test(sitemap.additionals.page[i].loc)
+          ? sitemap.additionals.page[i].loc
+          : settings.main.URL +
+            (context.locale === context.defaultLocale
+              ? ''
+              : '/' + context.locale) +
+            sitemap.additionals.page[i].loc
+      }</loc>\n`
       if (sitemap.additionals.page[i].lastmod)
         content += `        <lastmod>${moment
           .utc(sitemap.additionals.page[i].lastmod, 'DD.MM.YYYY HH:mm:ss')
