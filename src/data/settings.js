@@ -8,6 +8,40 @@ export const settings = {
     URL: publicRuntimeConfig.SITE_URL,
     parse: new URL(publicRuntimeConfig.SITE_URL)
   },
+  api: {
+    urls: {
+      add: () => {
+        return `${publicRuntimeConfig.API_URL}/urls`
+      },
+      get: (data) => {
+        /* Data: {hash: value} */
+        return `${publicRuntimeConfig.API_URL}/urls/${data.hash}`
+      },
+      delete: (data) => {
+        /* Data: {hash: value} */
+        return `${publicRuntimeConfig.API_URL}/urls/${data.hash}`
+      }
+    },
+    statistics: {
+      all: () => {
+        return `${publicRuntimeConfig.API_URL}/statistics/all`
+      },
+      urls: (data) => {
+        /* Data: {hash: value} */
+        return `${publicRuntimeConfig.API_URL}/statistics/urls/${data.hash}`
+      },
+      visits: (data) => {
+        /* Data: {id: value} */
+        return `${publicRuntimeConfig.API_URL}/statistics/visits/${data.id}`
+      }
+    },
+    sitemap: {
+      pagination: (data) => {
+        /* Data: {service: value, page: value} */
+        return `${publicRuntimeConfig.API_URL}/sitemap/${data.service}/${data.page}`
+      }
+    }
+  },
   searchEngines: {
     google: {
       verification: false,

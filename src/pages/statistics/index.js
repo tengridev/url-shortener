@@ -12,7 +12,7 @@ const StatisticsPage = () => {
   const { t } = useTranslation('statistics')
 
   const { data, error } = useSWR(
-    `${settings.main.API}/statistics/all`,
+    settings.api.statistics.all(),
     fetcher,
     settings.swr.statistics
   )

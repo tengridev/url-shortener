@@ -16,7 +16,7 @@ const StatisticsPage = ({ serverSide }) => {
 
   const { data, error } = useSWR(
     serverSide.data
-      ? `${settings.main.API}/statistics/visits/${serverSide.data.url_id}`
+      ? settings.api.statistics.visits({ id: serverSide.data.url_id })
       : null,
     fetcher,
     settings.swr.statistics
@@ -101,7 +101,7 @@ export async function getServerSideProps(context) {
     ).toString()
 
     await axios
-      .get(`${settings.main.API}/statistics/urls/${hash}`)
+      .get(settings.api.statistics.urls({ hash: hash }))
       .then((res) => {
         if (!res.data.error) {
           result.props.serverSide.data = res.data

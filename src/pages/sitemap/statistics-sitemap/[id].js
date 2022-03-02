@@ -22,7 +22,12 @@ export async function getServerSideProps(context) {
 
   if (sitemap.active.statistics) {
     await axios
-      .get(`${settings.main.API}/sitemap/${settings.main.parse.hostname}/${id}`)
+      .get(
+        settings.api.sitemap.pagination({
+          service: settings.main.parse.hostname,
+          page: id
+        })
+      )
       .then((res) => {
         if (res.data.sitemap.data) {
           res.data.sitemap.data.map((item) => {

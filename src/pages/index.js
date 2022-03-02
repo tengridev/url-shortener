@@ -68,7 +68,7 @@ const HomePage = () => {
 
               if (isContinue) {
                 axios
-                  .post(`${settings.main.API}/urls`, null, {
+                  .post(settings.api.urls.add(), null, {
                     params: data
                   })
                   .then((res) => {

@@ -101,7 +101,7 @@ export async function getServerSideProps(context) {
       ).toString()
 
       await axios
-        .get(`${settings.main.API}/urls/${hash}`)
+        .get(settings.api.urls.get({ hash: hash }))
         .then((res) => {
           if (!res.data.error) {
             if (res.data.url_redirect === 'direct') {

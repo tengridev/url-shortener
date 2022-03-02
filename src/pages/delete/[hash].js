@@ -23,7 +23,7 @@ const DeletePage = ({ data }) => {
     if (hash.value) {
       if (regex.md5.test(hash.value)) {
         axios
-          .delete(`${settings.main.API}/urls/${hash.value}`)
+          .delete(settings.api.urls.delete({ hash: hash.value }))
           .then((res) => {
             if (res.data.success) {
               setLoading(false)

@@ -22,7 +22,10 @@ export async function getServerSideProps(context) {
     for (let i = 1; i <= total; i++) {
       await axios
         .get(
-          `${settings.main.API}/sitemap/${settings.main.parse.hostname}/${i}`
+          settings.api.sitemap.pagination({
+            service: settings.main.parse.hostname,
+            page: i
+          })
         )
         .then((res) => {
           total = res.data.sitemap.page.total
