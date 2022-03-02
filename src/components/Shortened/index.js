@@ -1,3 +1,4 @@
+import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faTrash,
@@ -16,8 +17,8 @@ const Shortened = ({ title, data, advertising }) => {
   const [copied, setCopied] = useState(false)
 
   const AdsComponent = (order) => {
-    if (ads.shortened?.length > 0) {
-      const find = ads.shortened.find((item) => item.order === order.order)
+    if (ads.shortened.active && ads.shortened.data?.length > 0) {
+      const find = ads.shortened.data.find((item) => item.order === order.order)
 
       if (find) {
         return (
@@ -49,9 +50,29 @@ const Shortened = ({ title, data, advertising }) => {
                 <FontAwesomeIcon icon={faChartPie} className="w-4 h-4" />
               </button>
 
-              <button type="button" className="shortened-button">
-                <FontAwesomeIcon icon={faCopy} className="w-4 h-4" />
-              </button>
+              <CopyToClipboard
+                text={find.short.href}
+                onCopy={() => {
+                  setCopied(find.short.href)
+
+                  setTimeout(() => {
+                    setCopied(false)
+                  }, 1000)
+                }}
+              >
+                <button type="button" className="shortened-button">
+                  <FontAwesomeIcon
+                    icon={
+                      copied && copied === find.short.href ? faCheck : faCopy
+                    }
+                    className={`w-4 h-4 ${
+                      copied && copied === find.short.href
+                        ? 'animate-pulse'
+                        : ''
+                    }`}
+                  />
+                </button>
+              </CopyToClipboard>
             </div>
           </div>
         )
@@ -123,11 +144,9 @@ const Shortened = ({ title, data, advertising }) => {
                   </a>
                 </Link>
 
-                <button
-                  type="button"
-                  className="shortened-button"
-                  onClick={() => {
-                    navigator.clipboard.writeText(item.url_short)
+                <CopyToClipboard
+                  text={item.url_short}
+                  onCopy={() => {
                     setCopied(item.url_slug)
 
                     setTimeout(() => {
@@ -135,13 +154,19 @@ const Shortened = ({ title, data, advertising }) => {
                     }, 1000)
                   }}
                 >
-                  <FontAwesomeIcon
-                    icon={copied && copied === item.url_slug ? faCheck : faCopy}
-                    className={`w-4 h-4 ${
-                      copied && copied === item.url_slug ? 'animate-pulse' : ''
-                    }`}
-                  />
-                </button>
+                  <button type="button" className="shortened-button">
+                    <FontAwesomeIcon
+                      icon={
+                        copied && copied === item.url_slug ? faCheck : faCopy
+                      }
+                      className={`w-4 h-4 ${
+                        copied && copied === item.url_slug
+                          ? 'animate-pulse'
+                          : ''
+                      }`}
+                    />
+                  </button>
+                </CopyToClipboard>
               </div>
             </div>
           </React.Fragment>

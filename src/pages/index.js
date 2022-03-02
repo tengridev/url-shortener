@@ -172,11 +172,17 @@ const HomePage = () => {
           </select>
 
           <select name="service" className="shortener-service" required>
-            {settings.services.default.map((item, index) => (
-              <option value={item} key={index}>
-                {item}
-              </option>
-            ))}
+            {settings.services.default.map((item, index) =>
+              settings.main.parse.hostname === item ? (
+                <option defaultValue={item} key={index} selected>
+                  {item}
+                </option>
+              ) : (
+                <option value={item} key={index}>
+                  {item}
+                </option>
+              )
+            )}
           </select>
 
           <input
