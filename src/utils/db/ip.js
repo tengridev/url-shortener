@@ -45,8 +45,11 @@ export const IP = class {
           where: {
             ip: ip.id,
             createdAt: {
-              lte: moment.utc().format('YYYY-MM-DDTHH:mm:59Z'),
-              gte: moment.utc().format('YYYY-MM-DDTHH:mm:00Z')
+              lte: moment.utc().endOf('minutes').format('YYYY-MM-DDTHH:mm:ssZ'),
+              gte: moment
+                .utc()
+                .startOf('minutes')
+                .format('YYYY-MM-DDTHH:mm:ssZ')
             }
           }
         })
@@ -54,8 +57,11 @@ export const IP = class {
           where: {
             ip: ip.id,
             createdAt: {
-              lte: moment.utc().format('YYYY-MM-DDTHH:mm:59Z'),
-              gte: moment.utc().format('YYYY-MM-DDTHH:mm:00Z')
+              lte: moment.utc().endOf('minutes').format('YYYY-MM-DDTHH:mm:ssZ'),
+              gte: moment
+                .utc()
+                .startOf('minutes')
+                .format('YYYY-MM-DDTHH:mm:ssZ')
             }
           }
         })
