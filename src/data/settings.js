@@ -42,6 +42,14 @@ export const settings = {
       }
     }
   },
+  autoBan: {
+    active: true,
+    limit: {
+      url: 45,
+      visit: 60
+    },
+    whitelist: []
+  },
   searchEngines: {
     google: {
       verification: false,
@@ -66,45 +74,7 @@ export const settings = {
     banned: ['urlshortener.app', 'tr.radio.fm', 'biolink.im']
   },
   slugs: {
-    banned: [
-      'anasayfa',
-      'sayfa',
-      'yonetim',
-      'yonetici',
-      'posta',
-      'eposta',
-      'giris',
-      'girisyap',
-      'kayit',
-      'kayitol',
-      'index',
-      'home',
-      'default',
-      'page',
-      'admin',
-      'administrator',
-      'mod',
-      'moderator',
-      'pma',
-      'phpmyadmin',
-      'webmail',
-      'mail',
-      'email',
-      'cpanel',
-      'panel',
-      'signin',
-      'signup',
-      'signout',
-      'register',
-      'login',
-      'logout',
-      'delete',
-      'statistics',
-      'static',
-      'manifest',
-      'assets',
-      'img'
-    ]
+    banned: ['static', 'sitemap', 'delete', 'statistics']
   },
   latestShortened: {
     active: true,

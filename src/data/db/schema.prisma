@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = "mysql://root@localhost:3306/prisma_urlshortenerapp"
+}
+
+model Ip {
+  id            Int      @id @default(autoincrement())
+  ipAddress     String   @db.VarChar(46)
+  userAgent     String   @db.VarChar(255)
+  ban           Boolean  @default(false)
+  createdAt     DateTime @default(now()) @db.Timestamp(0)
+  updatedAt     DateTime @updatedAt
+}
+
+model Urls {
+  id            Int      @id @default(autoincrement())
+  slug          String   @db.MediumText
+  short         String   @db.MediumText
+  long          String   @db.MediumText
+  service       String   @db.VarChar(255)
+  redirect      String   @db.VarChar(255)
+  hash          String   @db.VarChar(32)
+  delete        String   @db.VarChar(32)
+  ip            Int
+  createdAt     DateTime @default(now()) @db.Timestamp(0)
+  updatedAt     DateTime @updatedAt
+}
+
+model Visits {
+  id            Int      @id @default(autoincrement())
+  url           Int
+  ip            Int
+  createdAt     DateTime @default(now()) @db.Timestamp(0)
+  updatedAt     DateTime @updatedAt
+}
