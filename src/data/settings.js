@@ -74,6 +74,7 @@ export const settings = {
     banned: ['urlshortener.app', 'tr.radio.fm', 'biolink.im']
   },
   slugs: {
+    length: 5,
     banned: ['static', 'sitemap', 'delete', 'statistics']
   },
   latestShortened: {
