@@ -3,7 +3,7 @@ import { Sitemap } from '../../../../utils/db/sitemap'
 import { settings } from '../../../../data/settings'
 import { regex } from '../../../../utils/regex'
 
-const SitemapPagination = async (req, res) => {
+const SitemapAPI = async (req, res) => {
   if (req.method === 'GET') {
     const ip = new IP(req)
     await ip.autoBan()
@@ -40,4 +40,4 @@ const SitemapPagination = async (req, res) => {
   }
 }
 
-export default SitemapPagination
+export default SitemapAPI

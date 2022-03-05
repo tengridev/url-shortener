@@ -2,7 +2,7 @@ import { IP } from '../../../../utils/db/ip'
 import { URLs } from '../../../../utils/db/urls'
 import { regex } from '../../../../utils/regex'
 
-const StatisticsURLs = async (req, res) => {
+const StatisticsAPI = async (req, res) => {
   if (req.method === 'GET') {
     const ip = new IP(req)
     await ip.autoBan()
@@ -41,4 +41,4 @@ const StatisticsURLs = async (req, res) => {
   }
 }
 
-export default StatisticsURLs
+export default StatisticsAPI

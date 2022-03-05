@@ -70,12 +70,12 @@ export const settings = {
     }
   },
   services: {
-    default: ['urlshortener.app', 'tr.radio.fm', 'biolink.im'],
-    banned: ['urlshortener.app', 'tr.radio.fm', 'biolink.im']
+    default: ['localhost', 'urlshortener.app', 'tr.radio.fm', 'biolink.im'],
+    banned: ['localhost', 'urlshortener.app', 'tr.radio.fm', 'biolink.im']
   },
   slugs: {
-    length: 5,
-    banned: ['static', 'sitemap', 'delete', 'statistics']
+    length: 4,
+    banned: ['api', 'static', 'sitemap', 'delete', 'statistics']
   },
   latestShortened: {
     active: true,
