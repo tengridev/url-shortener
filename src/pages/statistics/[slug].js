@@ -16,7 +16,7 @@ const StatisticsPage = ({ serverSide }) => {
 
   const { data, error } = useSWR(
     serverSide.data
-      ? settings.api.statistics.visits({ id: serverSide.data.url_id })
+      ? settings.api.statistics.visits({ id: serverSide.data.id })
       : null,
     fetcher,
     settings.swr.statistics

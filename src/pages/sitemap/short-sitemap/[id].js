@@ -36,8 +36,8 @@ export async function getServerSideProps(context) {
               context.locale === context.defaultLocale
                 ? ''
                 : '/' + context.locale
-            }/${item.url_slug}</loc>
-        <lastmod>${moment(item.created_at).format(
+            }/${item.slug}</loc>
+        <lastmod>${moment(item.createdAt).format(
           'YYYY-MM-DDTHH:mm:ssZ'
         )}</lastmod>
     </url>\n`

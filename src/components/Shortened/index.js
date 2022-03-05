@@ -95,33 +95,33 @@ const Shortened = ({ title, data, advertising }) => {
                 <p className="shortened-short">
                   <Link
                     href={
-                      item.url_service === settings.main.parse.hostname
+                      item.service === settings.main.parse.hostname
                         ? {
                             pathname: '/[slug]',
-                            query: { slug: item.url_slug }
+                            query: { slug: item.slug }
                           }
-                        : item.url_short
+                        : item.short
                     }
                   >
-                    <a>{item.url_short}</a>
+                    <a>{item.short}</a>
                   </Link>
                 </p>
 
                 <p className="shortened-long">
-                  <Link href={item.url_long}>
-                    <a rel="nofollow">{item.url_long}</a>
+                  <Link href={item.long}>
+                    <a rel="nofollow">{item.long}</a>
                   </Link>
                 </p>
               </div>
               <div className="shortened-button-group">
                 <Link
                   href={
-                    item.url_service === settings.main.parse.hostname
+                    item.service === settings.main.parse.hostname
                       ? {
                           pathname: '/delete/[delete]',
-                          query: { delete: item.url_delete }
+                          query: { delete: item.delete }
                         }
-                      : `https://${item.url_service}/delete/${item.url_delete}`
+                      : `https://${item.service}/delete/${item.delete}`
                   }
                 >
                   <a className="shortened-button">
@@ -131,12 +131,12 @@ const Shortened = ({ title, data, advertising }) => {
 
                 <Link
                   href={
-                    item.url_service === settings.main.parse.hostname
+                    item.service === settings.main.parse.hostname
                       ? {
                           pathname: '/statistics/[slug]',
-                          query: { slug: item.url_slug }
+                          query: { slug: item.slug }
                         }
-                      : `https://${item.url_service}/statistics/${item.url_slug}`
+                      : `https://${item.service}/statistics/${item.slug}`
                   }
                 >
                   <a className="shortened-button">
@@ -145,9 +145,9 @@ const Shortened = ({ title, data, advertising }) => {
                 </Link>
 
                 <CopyToClipboard
-                  text={item.url_short}
+                  text={item.short}
                   onCopy={() => {
-                    setCopied(item.url_slug)
+                    setCopied(item.slug)
 
                     setTimeout(() => {
                       setCopied(false)
@@ -156,13 +156,9 @@ const Shortened = ({ title, data, advertising }) => {
                 >
                   <button type="button" className="shortened-button">
                     <FontAwesomeIcon
-                      icon={
-                        copied && copied === item.url_slug ? faCheck : faCopy
-                      }
+                      icon={copied && copied === item.slug ? faCheck : faCopy}
                       className={`w-4 h-4 ${
-                        copied && copied === item.url_slug
-                          ? 'animate-pulse'
-                          : ''
+                        copied && copied === item.slug ? 'animate-pulse' : ''
                       }`}
                     />
                   </button>

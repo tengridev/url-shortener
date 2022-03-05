@@ -48,7 +48,8 @@ export async function getServerSideProps(context) {
       }</loc>\n`
       if (sitemap.additionals.page[i].lastmod)
         content += `        <lastmod>${moment(
-          sitemap.additionals.page[i].lastmod
+          sitemap.additionals.page[i].lastmod,
+          'DD.MM.YYYY HH:mm:ss'
         ).format('YYYY-MM-DDTHH:mm:ssZ')}</lastmod>\n`
       content += `    </url>\n`
     }

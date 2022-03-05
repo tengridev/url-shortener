@@ -38,7 +38,7 @@ export async function getServerSideProps(context) {
                 : '/' + context.locale
             }/sitemap/short-sitemap/${i}</loc>
         <lastmod>${moment(
-          res.data.sitemap.data[res.data.sitemap.data.length - 1].created_at
+          res.data.sitemap.data[res.data.sitemap.data.length - 1].createdAt
         ).format('YYYY-MM-DDTHH:mm:ssZ')}</lastmod>
     </sitemap>\n`
           }
@@ -51,7 +51,7 @@ export async function getServerSideProps(context) {
                 : '/' + context.locale
             }/sitemap/statistics-sitemap/${i}</loc>
         <lastmod>${moment(
-          res.data.sitemap.data[res.data.sitemap.data.length - 1].created_at
+          res.data.sitemap.data[res.data.sitemap.data.length - 1].createdAt
         ).format('YYYY-MM-DDTHH:mm:ssZ')}</lastmod>
     </sitemap>\n`
           }
@@ -73,7 +73,7 @@ export async function getServerSideProps(context) {
                 : '/' + context.locale) +
               item.loc
         }</loc>
-        <lastmod>${moment(item.lastmod).format(
+        <lastmod>${moment(item.lastmod, 'DD.MM.YYYY HH:mm:ss').format(
           'YYYY-MM-DDTHH:mm:ssZ'
         )}</lastmod>
     </sitemap>\n`

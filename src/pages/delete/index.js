@@ -37,7 +37,7 @@ const DeletePage = () => {
 
               const lsShortened = storage
                 .get('shortened')
-                .filter((item) => item.url_delete !== hash.value)
+                .filter((item) => item.delete !== hash.value)
 
               if (lsShortened.length > 0) {
                 storage.set('shortened', lsShortened)

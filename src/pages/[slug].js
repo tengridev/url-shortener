@@ -28,7 +28,7 @@ const SlugPage = ({ serverSide }) => {
             if (!redirected && router) {
               redirected = true
 
-              router.push(serverSide.data.url_long)
+              router.push(serverSide.data.long)
             }
           }
         }
@@ -104,11 +104,11 @@ export async function getServerSideProps(context) {
         .get(settings.api.urls.get({ hash: hash }))
         .then((res) => {
           if (!res.data.error) {
-            if (res.data.url_redirect === 'direct') {
+            if (res.data.redirect === 'direct') {
               result = {
                 redirect: {
                   permanent: false,
-                  destination: res.data.url_long
+                  destination: res.data.long
                 }
               }
             } else {
