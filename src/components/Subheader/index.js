@@ -6,7 +6,7 @@ const Subheader = ({ data }) => {
       <div className="subheader-details">
         <div className="subheader-short">{data.url_short}</div>
         <div className="subheader-date">
-          {moment.utc(data.created_at).format('DD.MM.YYYY HH:mm:ss')}
+          {moment(data.created_at).format('DD.MM.YYYY HH:mm:ss')}
         </div>
       </div>
     </div>

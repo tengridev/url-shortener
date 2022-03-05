@@ -37,9 +37,9 @@ export async function getServerSideProps(context) {
                 ? ''
                 : '/' + context.locale
             }/statistics/${item.url_slug}</loc>
-        <lastmod>${moment
-          .utc(item.created_at)
-          .format('YYYY-MM-DDTHH:mm:ss+00:00')}</lastmod>
+        <lastmod>${moment(item.created_at).format(
+          'YYYY-MM-DDTHH:mm:ssZ'
+        )}</lastmod>
     </url>\n`
           })
         } else {

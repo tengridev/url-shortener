@@ -16,7 +16,7 @@ export const Sitemap = class {
           contains: data.service
         }
       },
-      skip: data.page <= 0 ? 0 : data.page - 1,
+      skip: data.page <= 0 ? 0 : data.page * sitemap.limit - sitemap.limit,
       take: sitemap.limit
     })
 

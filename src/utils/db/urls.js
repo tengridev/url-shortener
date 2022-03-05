@@ -6,10 +6,7 @@ const prisma = new PrismaClient()
 
 export const URLs = class {
   async slug(max, length, service, slug = false) {
-    if (!settings.services.default.includes(service))
-      service = settings.services.default[0]
-
-    const character = [
+    const chars = [
       'a',
       'b',
       'c',
@@ -77,7 +74,7 @@ export const URLs = class {
     if (!slug) {
       slug = ''
       for (let i = 0; i < length; i++) {
-        slug += character[Math.floor(Math.random() * (max + 1))]
+        slug += chars[Math.floor(Math.random() * (max + 1))]
       }
     }
 
@@ -110,9 +107,6 @@ export const URLs = class {
   }
 
   async slugControl(service, slug) {
-    if (!settings.services.default.includes(service))
-      service = settings.services.default[0]
-
     const keys = {
       hash: md5(`${settings.keys.signature}:${service}:${slug}`).toString()
     }

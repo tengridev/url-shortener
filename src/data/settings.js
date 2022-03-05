@@ -24,7 +24,7 @@ export const settings = {
     },
     statistics: {
       all: () => {
-        return `${publicRuntimeConfig.API_URL}/statistics/all`
+        return `${publicRuntimeConfig.API_URL}/statistics`
       },
       urls: (data) => {
         /* Data: {hash: value} */
