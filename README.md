@@ -2,6 +2,14 @@
 
 Next.JS ile hazırlanmış basit ve hızlı URL kısaltma servisi.
 
+## Ekran Görüntüsü
+
+- **[Tüm ekran görüntüleri](https://github.com/regexart/url-shortener-app/public/static/screenshot)**
+
+<p align="center">
+  <img src="https://github.com/regexart/url-shortener-app/raw/main/public/static/screenshot/index.png" alt="URL Shortener">
+</p>
+
 ## Kurulum
 
 ```bash
