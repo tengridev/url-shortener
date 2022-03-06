@@ -8,8 +8,8 @@ export const manifest = {
     start_url: '/?utm_source=PWA',
     display: 'standalone',
     orientation: 'portrait',
-    theme_color: '#f5f5f5',
-    background_color: '#f5f5f5',
+    theme_color: '#18181b',
+    background_color: '#18181b',
     icons: [
       {
         src: '/static/img/pwa-192-192.png',

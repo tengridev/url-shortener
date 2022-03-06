@@ -56,10 +56,23 @@ body {
 }
 
 .subheader {
-  @apply h-40 grid grid-cols-12 content-center border-b border-neutral-200 bg-neutral-100 dark:border-zinc-800 dark:bg-zinc-900;
+  @apply py-8 grid grid-cols-12 content-center border-b border-neutral-200 bg-neutral-100 dark:border-zinc-800 dark:bg-zinc-900;
 
   &-details {
-    @apply col-start-2 col-span-10 whitespace-nowrap overflow-hidden;
+    @apply col-start-2 col-span-10 sm:col-start-2 sm:col-span-8 flex flex-col justify-center whitespace-nowrap overflow-hidden;
+  }
+
+  &-qrcode {
+    @apply mt-8 col-start-2 col-span-10 sm:col-start-10 sm:col-span-2 flex flex-col justify-center items-center sm:m-0 sm:items-end;
+
+    .qrcode-svg,
+    &-svg {
+      @apply rounded-none;
+
+      path:nth-child(2) {
+        @apply fill-neutral-800 dark:fill-zinc-300;
+      }
+    }
   }
 
   &-short {

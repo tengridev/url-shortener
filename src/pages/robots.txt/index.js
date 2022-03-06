@@ -1,5 +1,6 @@
 import { settings } from '../../data/settings'
 import { robots } from '../../data/robots'
+import { regex } from '../../utils/regex'
 
 const RobotsPage = () => {}
 
@@ -50,7 +51,9 @@ export async function getServerSideProps(context) {
   })
 
   sitemaps.map((item) => {
-    content += `Sitemap: ${item}\n`
+    content += `Sitemap: ${
+      regex.url.test(item) ? item : settings.main.URL + item
+    }\n`
   })
 
   context.res.setHeader('Content-Type', 'text/plain; charset=UTF-8')

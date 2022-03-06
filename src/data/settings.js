@@ -48,7 +48,7 @@ export const settings = {
       url: 45,
       visit: 60
     },
-    whitelist: []
+    whitelist: ['::1', '127.0.0.1']
   },
   searchEngines: {
     google: {
@@ -70,8 +70,8 @@ export const settings = {
     }
   },
   services: {
-    default: ['localhost', 'urlshortener.app', 'tr.radio.fm', 'biolink.im'],
-    banned: ['localhost', 'urlshortener.app', 'tr.radio.fm', 'biolink.im']
+    default: ['urlshortener.app'],
+    banned: ['urlshortener.app']
   },
   slugs: {
     length: 4,
@@ -79,11 +79,11 @@ export const settings = {
   },
   latestShortened: {
     active: true,
-    limit: 50
+    limit: 25
   },
   localStorage: {
     encrypt: true,
-    secret: 'c439a6d5249da1838bc326434ff2d0f6',
+    secret: '4825c24387d1b9a891401a6c93e4b4e8',
     ttl: 60 * 60 * 24 * 365
   },
   swr: {
@@ -94,7 +94,13 @@ export const settings = {
       refreshInterval: 1000 * 15
     }
   },
+  qrCode: {
+    size: 100,
+    renderAs: 'svg',
+    bgColor: 'transparent',
+    level: 'H'
+  },
   keys: {
-    signature: 'c439a6d5249da1838bc326434ff2d0f6'
+    signature: '4825c24387d1b9a891401a6c93e4b4e8'
   }
 }
