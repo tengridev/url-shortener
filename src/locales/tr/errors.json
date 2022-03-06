@@ -4,5 +4,11 @@
     "og-title": "404 - {{siteTitle}}",
     "alert-title": "404",
     "alert-text": "Ulaşmaya çalıştığınız sayfa bulunamadı ya da silindi."
+  },
+  "error-500": {
+    "title": "500 - {{siteTitle}}",
+    "og-title": "500 - {{siteTitle}}",
+    "alert-title": "500",
+    "alert-text": "Üzgünüm, sunucu kaynaklı bir hata sebebiyle sayfa oluşturulamadı. Lütfen daha sonra tekrar deneyin."
   }
 }
