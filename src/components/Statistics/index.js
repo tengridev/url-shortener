@@ -31,7 +31,7 @@ const Statistics = ({ title, data, loading }) => {
   }
 
   const readableNumber = (value) => {
-    const length = value.length
+    const length = value.toString().length
     let result = false
     let text = false
 
