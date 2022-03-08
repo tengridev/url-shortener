@@ -174,7 +174,7 @@ const HomePage = () => {
           <select name="service" className="shortener-service" required>
             {settings.services.default.map((item, index) =>
               settings.main.parse.hostname === item ? (
-                <option defaultValue={item} key={index} selected>
+                <option defaultValue={item} key={index}>
                   {item}
                 </option>
               ) : (

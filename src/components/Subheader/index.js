@@ -6,7 +6,7 @@ const Subheader = ({ data }) => {
   return (
     <div className="subheader">
       <div className="subheader-details">
-        <div className="subheader-short">{data.short}</div>
+        <div className="subheader-short">{`${data.service}/${data.slug}`}</div>
         <div className="subheader-date">
           {moment(data.createdAt).format('DD.MM.YYYY HH:mm:ss')}
         </div>

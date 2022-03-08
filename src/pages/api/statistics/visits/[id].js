@@ -11,7 +11,7 @@ const StatisticsAPI = async (req, res) => {
     if (!getIp.ban) {
       let urlId = parseInt(req.query.id)
 
-      if (regex.id.test(urlId)) {
+      if (regex.id.test(urlId) && urlId > 0) {
         const statistics = new Statistics()
         const visits = await statistics.visit({ urlId })
 

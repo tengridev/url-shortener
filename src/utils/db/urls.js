@@ -181,19 +181,19 @@ export const URLs = class {
         }
       })
 
-      if (urls && visits) {
+      if (urls.count > 0 && visits.count > 0) {
         return {
           success: {
             key: 'data_deleted'
           }
         }
-      } else if (urls) {
+      } else if (urls.count > 0) {
         return {
           success: {
             key: 'url_deleted'
           }
         }
-      } else if (visits) {
+      } else if (visits.count > 0) {
         return {
           success: {
             key: 'statistics_deleted'

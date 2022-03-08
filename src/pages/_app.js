@@ -73,6 +73,10 @@ function App({ Component, pageProps }) {
             name: 'apple-mobile-web-app-title',
             content: t('application-name')
           },
+          {
+            name: 'theme-color',
+            content: '#18181b'
+          },
           ...verifications
         ]}
         additionalLinkTags={[
