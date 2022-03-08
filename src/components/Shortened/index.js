@@ -1,3 +1,4 @@
+import React, { useState } from 'react'
 import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -9,7 +10,6 @@ import {
 import { settings } from '../../data/settings'
 import { ads } from '../../data/ads'
 import useTranslation from 'next-translate/useTranslation'
-import React, { useState } from 'react'
 import Link from 'next/link'
 
 const Shortened = ({ title, data, advertising }) => {
@@ -115,14 +115,10 @@ const Shortened = ({ title, data, advertising }) => {
               </div>
               <div className="shortened-button-group">
                 <Link
-                  href={
-                    item.service === settings.main.parse.hostname
-                      ? {
-                          pathname: '/delete/[delete]',
-                          query: { delete: item.delete }
-                        }
-                      : `https://${item.service}/delete/${item.delete}`
-                  }
+                  href={{
+                    pathname: '/delete/[delete]',
+                    query: { delete: item.delete }
+                  }}
                 >
                   <a className="shortened-button">
                     <FontAwesomeIcon icon={faTrash} className="w-4 h-4" />

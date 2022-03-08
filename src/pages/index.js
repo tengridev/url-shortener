@@ -15,6 +15,9 @@ const HomePage = () => {
   const [shortAlert, setShortAlert] = useState(false)
   const [shortenedData, setShortenedData] = useState(false)
   const [lsShortenedData, setLsShortenedData] = useState(false)
+  const [selectedService, setSelectedService] = useState(
+    settings.main.parse.hostname
+  )
 
   useEffect(() => {
     if (storage.get('shortened')?.length > 0)
@@ -171,18 +174,20 @@ const HomePage = () => {
             ))}
           </select>
 
-          <select name="service" className="shortener-service" required>
-            {settings.services.default.map((item, index) =>
-              settings.main.parse.hostname === item ? (
-                <option defaultValue={item} key={index}>
-                  {item}
-                </option>
-              ) : (
-                <option value={item} key={index}>
-                  {item}
-                </option>
-              )
-            )}
+          <select
+            name="service"
+            className="shortener-service"
+            value={selectedService}
+            onChange={(e) => {
+              setSelectedService(e.target.value)
+            }}
+            required
+          >
+            {settings.services.default.map((item, index) => (
+              <option value={item} key={index}>
+                {item}
+              </option>
+            ))}
           </select>
 
           <input
