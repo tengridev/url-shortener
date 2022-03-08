@@ -1,6 +1,7 @@
 import { settings } from '../../data/settings'
 import { PrismaClient } from '@prisma/client'
 import md5 from 'crypto-js/md5'
+import moment from 'moment'
 
 const prisma = new PrismaClient()
 
@@ -149,7 +150,13 @@ export const URLs = class {
         })
       }
 
-      return query
+      return {
+        ...query,
+        format: {
+          createdAt: moment(query.createdAt).format('DD.MM.YYYY HH:mm:ss'),
+          updatedAt: moment(query.updatedAt).format('DD.MM.YYYY HH:mm:ss')
+        }
+      }
     } else {
       return {
         error: {
