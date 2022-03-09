@@ -63,6 +63,14 @@ export const settings = {
       verification: false
     }
   },
+  noindex: {
+    home: false,
+    slug: true,
+    statistics: false,
+    statisticsSlug: true,
+    delete: false,
+    deleteHash: true
+  },
   redirects: {
     default: ['direct', 'timer'],
     timer: {

@@ -93,7 +93,7 @@ const DeletePage = ({ data }) => {
           description: t('all:og-description'),
           site_name: t('all:site-title')
         }}
-        noindex={true}
+        noindex={settings.noindex.deleteHash}
       />
       <div className="main">
         <div className="delete">

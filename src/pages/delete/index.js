@@ -90,6 +90,7 @@ const DeletePage = () => {
           description: t('all:og-description'),
           site_name: t('all:site-title')
         }}
+        noindex={settings.noindex.delete}
       />
       <div className="main">
         <div className="delete">

@@ -39,6 +39,7 @@ const StatisticsPage = ({ serverSide }) => {
           description: t('all:og-description'),
           site_name: t('all:site-title')
         }}
+        noindex={settings.noindex.statisticsSlug}
       />
 
       {!serverSide.error ? (

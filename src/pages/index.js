@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { NextSeo } from 'next-seo'
 import { regex } from '../utils/regex'
 import { storage } from '../utils/storage'
 import { settings } from '../data/settings'
@@ -155,83 +156,86 @@ const HomePage = () => {
   }
 
   return (
-    <div className="main">
-      <div className="shortener">
-        <form onSubmit={shortenURL}>
-          <input
-            type="url"
-            name="url"
-            placeholder={t('long-url')}
-            className="shortener-url"
-            required
+    <>
+      <NextSeo noindex={settings.noindex.home} />
+      <div className="main">
+        <div className="shortener">
+          <form onSubmit={shortenURL}>
+            <input
+              type="url"
+              name="url"
+              placeholder={t('long-url')}
+              className="shortener-url"
+              required
+            />
+
+            <select name="redirect" className="shortener-redirect">
+              {settings.redirects.default.map((item, index) => (
+                <option value={item} key={index}>
+                  {t(item)}
+                </option>
+              ))}
+            </select>
+
+            <select
+              name="service"
+              className="shortener-service"
+              value={selectedService}
+              onChange={(e) => {
+                setSelectedService(e.target.value)
+              }}
+              required
+            >
+              {settings.services.default.map((item, index) => (
+                <option value={item} key={index}>
+                  {item}
+                </option>
+              ))}
+            </select>
+
+            <input
+              type="text"
+              name="slug"
+              placeholder={t('short-address')}
+              className="shortener-slug"
+            />
+
+            <button
+              type="submit"
+              className={`shortener-submit ${loading ? 'animate-pulse' : ''}`}
+            >
+              {t('shorten-button')}
+            </button>
+          </form>
+        </div>
+
+        {shortAlert && (
+          <Alert
+            title={shortAlert.title}
+            text={shortAlert.text}
+            className={`mt-20 ${shortAlert.className}`}
           />
+        )}
 
-          <select name="redirect" className="shortener-redirect">
-            {settings.redirects.default.map((item, index) => (
-              <option value={item} key={index}>
-                {t(item)}
-              </option>
-            ))}
-          </select>
-
-          <select
-            name="service"
-            className="shortener-service"
-            value={selectedService}
-            onChange={(e) => {
-              setSelectedService(e.target.value)
-            }}
-            required
-          >
-            {settings.services.default.map((item, index) => (
-              <option value={item} key={index}>
-                {item}
-              </option>
-            ))}
-          </select>
-
-          <input
-            type="text"
-            name="slug"
-            placeholder={t('short-address')}
-            className="shortener-slug"
+        {shortenedData && (
+          <Shortened
+            title={t('shortened-result')}
+            data={shortenedData}
+            advertising={false}
           />
+        )}
 
-          <button
-            type="submit"
-            className={`shortener-submit ${loading ? 'animate-pulse' : ''}`}
-          >
-            {t('shorten-button')}
-          </button>
-        </form>
+        {settings.latestShortened.active && lsShortenedData && (
+          <Shortened
+            title={t('shortened-latest')}
+            data={lsShortenedData}
+            advertising={true}
+          />
+        )}
+
+        <Features />
       </div>
-
-      {shortAlert && (
-        <Alert
-          title={shortAlert.title}
-          text={shortAlert.text}
-          className={`mt-20 ${shortAlert.className}`}
-        />
-      )}
-
-      {shortenedData && (
-        <Shortened
-          title={t('shortened-result')}
-          data={shortenedData}
-          advertising={false}
-        />
-      )}
-
-      {settings.latestShortened.active && lsShortenedData && (
-        <Shortened
-          title={t('shortened-latest')}
-          data={lsShortenedData}
-          advertising={true}
-        />
-      )}
-
-      <Features />
-    </div>
+    </>
   )
 }
 
