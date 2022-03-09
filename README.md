@@ -10,14 +10,6 @@ Next.JS ile hazırlanmış basit ve hızlı URL kısaltma servisi.
   <img src="https://github.com/regexart/url-shortener-app/raw/main/public/static/screenshot/index.png" alt="URL Shortener">
 </p>
 
-## Kurulum
-
-```bash
-$ npm install
-# ya da
-$ yarn install
-```
-
 ## Düzenleme
 
 - **.env.example** dosyasını **.env** olarak değiştirip ilgili kısımları düzenleyin ya da cross-env kullanın.
@@ -29,21 +21,29 @@ $ yarn install
   - **defaultLocale** varsayılan dil olarak ayarlanır, isteğe bağlı olarak değiştirebilirsiniz.
   - Detaylı bilgi için [next-translate](https://github.com/vinissimus/next-translate) sayfasına göz atabilirsiniz.
 
-Örnek cross-env:
+## Kurulum
 
 ```bash
-yarn cross-env SITE_URL=http://localhost:3000 API_URL=http://localhost:3000/api next dev
+$ npm install
+# ya da
+$ yarn install
 ```
 
-## Çalıştırma
-
-### Veritabanı Oluşturma
+## Veritabanı Oluşturma
 
 **Not:** Veritabanı olarak MySQL kullanılmıştır. Başka bir veritabanı kullanmak isterseniz lütfen [prisma.io](https://www.prisma.io/) web sitesinde yer alan, desteklenen veritabanlarından istediğiniz veritabanına göre **src/data/db/schema.prisma** dosyasını düzenleyin.
 
 ```bash
 $ npx prisma db push
 $ npx prisma generate
+```
+
+## Çalıştırma
+
+Örnek cross-env:
+
+```bash
+yarn cross-env SITE_URL=http://localhost:3000 API_URL=http://localhost:3000/api next dev
 ```
 
 ### Geliştirme Ortamı
@@ -70,4 +70,30 @@ $ yarn build
 $ npm run start
 # ya da
 $ yarn start
+```
+
+## PM2
+
+### PM2 Kurulumu
+
+```bash
+$ npm install pm2@latest -g
+# ya da
+$ yarn global add pm2
+```
+
+### PM2 Çalıştırma
+
+#### Oluştur
+
+```bash
+$ npm run build
+# ya da
+$ yarn build
+```
+
+#### Başlat
+
+```bash
+$ pm2 start yarn --interpreter bash --name urlshortener -- start
 ```
