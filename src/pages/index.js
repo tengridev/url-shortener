@@ -40,7 +40,7 @@ const HomePage = () => {
           .toLocaleLowerCase('en-US')
           .replaceAll('www.', '')
 
-        if (!settings.services.banned.includes(parseURL)) {
+        if (!settings.services.disallow.includes(parseURL)) {
           if (service.value) {
             if (settings.services.default.includes(service.value)) {
               let isContinue = true
@@ -53,7 +53,7 @@ const HomePage = () => {
               }
               if (slug.value) {
                 if (
-                  !settings.slugs.banned.includes(
+                  !settings.slugs.disallow.includes(
                     slug.value.toLocaleLowerCase('en-US')
                   )
                 ) {
@@ -64,7 +64,7 @@ const HomePage = () => {
                   setLoading(false)
                   setShortAlert({
                     title: t('error'),
-                    text: t('banned-slug'),
+                    text: t('disallow-slug'),
                     className: 'alert-danger'
                   })
                 }
@@ -133,7 +133,7 @@ const HomePage = () => {
           setLoading(false)
           setShortAlert({
             title: t('error'),
-            text: t('banned-domain'),
+            text: t('disallow-domain'),
             className: 'alert-danger'
           })
         }

@@ -25,7 +25,11 @@ const SlugPage = ({ serverSide }) => {
           if (countdown > 0) {
             setCountdown(--countdown)
           } else {
-            if (!redirected && router) {
+            if (
+              !settings.redirects.timer.redirectButton &&
+              !redirected &&
+              router
+            ) {
               redirected = true
 
               router.push(serverSide.data.long)
@@ -64,7 +68,21 @@ const SlugPage = ({ serverSide }) => {
 
           <div className="main">
             <div className="timer">
-              <div className="timer-text">{countdown}</div>
+              <div className="timer-text">
+                {settings.redirects.timer.redirectButton && countdown <= 0 ? (
+                  <button
+                    type="button"
+                    className="timer-redirect"
+                    onClick={() => {
+                      router.push(serverSide.data.long)
+                    }}
+                  >
+                    {t('redirect-button')}
+                  </button>
+                ) : (
+                  countdown
+                )}
+              </div>
             </div>
           </div>
         </>
@@ -96,7 +114,7 @@ export async function getServerSideProps(context) {
       }
     }
 
-    if (!settings.slugs.banned.includes(slug.toLocaleLowerCase('en-US'))) {
+    if (!settings.slugs.disallow.includes(slug.toLocaleLowerCase('en-US'))) {
       const hash = md5(
         `${settings.keys.signature}:${settings.main.parse.hostname}:${slug}`
       ).toString()
@@ -126,7 +144,7 @@ export async function getServerSideProps(context) {
           result.props.serverSide.error = 'unknown-error'
         })
     } else {
-      result.props.serverSide.error = 'banned-slug'
+      result.props.serverSide.error = 'disallow-slug'
     }
   } else {
     result = {

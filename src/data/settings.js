@@ -74,16 +74,17 @@ export const settings = {
   redirects: {
     default: ['direct', 'timer'],
     timer: {
-      countdown: 15
+      countdown: 15,
+      redirectButton: true
     }
   },
   services: {
     default: ['urlshortener.app'],
-    banned: ['urlshortener.app']
+    disallow: ['urlshortener.app']
   },
   slugs: {
     length: 4,
-    banned: ['api', 'static', 'sitemap', 'delete', 'statistics']
+    disallow: ['404', '500', 'api', 'static', 'sitemap', 'delete', 'statistics']
   },
   latestShortened: {
     active: true,

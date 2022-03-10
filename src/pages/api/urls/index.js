@@ -29,12 +29,14 @@ const URLsAPI = async (req, res) => {
 
           const urls = new URLs()
 
-          if (!settings.services.banned.includes(parseURL)) {
+          if (!settings.services.disallow.includes(parseURL)) {
             let isContinue = true
 
             if (slug) {
               if (
-                settings.slugs.banned.includes(slug.toLocaleLowerCase('en-US'))
+                settings.slugs.disallow.includes(
+                  slug.toLocaleLowerCase('en-US')
+                )
               ) {
                 isContinue = false
 
