@@ -10,10 +10,11 @@
   "unknown-error": "Bilinmeyen bir hata oluştu. Lütfen daha sonra tekrar deneyin.",
   "empty-url": "URL adresi boş bırakılamaz.",
   "invalid-url": "URL adresi geçersiz.",
-  "banned-slug": "Kullanmak istediğiniz kısa adres yasaklandı.",
-  "banned-domain": "URL adresinde kullanılan alan adı yasaklandı.",
+  "disallow-slug": "Kullanmak istediğiniz kısa adres yasaklandı.",
+  "disallow-domain": "URL adresinde kullanılan alan adı yasaklandı.",
   "empty-service": "Servis boş bırakılamaz.",
   "invalid-service": "Servis geçersiz.",
   "shortened-result": "Sonuç",
-  "shortened-latest": "Son Kısaltılan URL Adresleri"
+  "shortened-latest": "Son Kısaltılan URL Adresleri",
+  "redirect-button": "Yönlendir"
 }
