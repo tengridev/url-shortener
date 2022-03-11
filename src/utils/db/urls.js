@@ -132,6 +132,7 @@ export const URLs = class {
         redirect: true,
         hash: true,
         delete: options?.delete === false ? false : true,
+        ban: true,
         createdAt: true,
         updatedAt: true
       },
@@ -141,20 +142,28 @@ export const URLs = class {
     })
 
     if (query) {
-      if (options?.visit) {
-        await prisma.visits.create({
-          data: {
-            url: query.id,
-            ip: ip.id
-          }
-        })
-      }
+      if (!query.ban) {
+        if (options?.visit) {
+          await prisma.visits.create({
+            data: {
+              url: query.id,
+              ip: ip.id
+            }
+          })
+        }
 
-      return {
-        ...query,
-        format: {
-          createdAt: moment(query.createdAt).format('DD.MM.YYYY HH:mm:ss'),
-          updatedAt: moment(query.updatedAt).format('DD.MM.YYYY HH:mm:ss')
+        return {
+          ...query,
+          format: {
+            createdAt: moment(query.createdAt).format('DD.MM.YYYY HH:mm:ss'),
+            updatedAt: moment(query.updatedAt).format('DD.MM.YYYY HH:mm:ss')
+          }
+        }
+      } else {
+        return {
+          error: {
+            key: 'url_ban'
+          }
         }
       }
     } else {
@@ -169,7 +178,8 @@ export const URLs = class {
   async delete(hash) {
     const query = await prisma.urls.findFirst({
       select: {
-        id: true
+        id: true,
+        ban: true
       },
       where: {
         delete: hash
@@ -177,39 +187,47 @@ export const URLs = class {
     })
 
     if (query) {
-      const urls = await prisma.urls.deleteMany({
-        where: {
-          delete: hash
-        }
-      })
-      const visits = await prisma.visits.deleteMany({
-        where: {
-          url: query.id
-        }
-      })
+      if (!query.ban) {
+        const urls = await prisma.urls.deleteMany({
+          where: {
+            delete: hash
+          }
+        })
+        const visits = await prisma.visits.deleteMany({
+          where: {
+            url: query.id
+          }
+        })
 
-      if (urls.count > 0 && visits.count > 0) {
-        return {
-          success: {
-            key: 'data_deleted'
+        if (urls.count > 0 && visits.count > 0) {
+          return {
+            success: {
+              key: 'data_deleted'
+            }
           }
-        }
-      } else if (urls.count > 0) {
-        return {
-          success: {
-            key: 'url_deleted'
+        } else if (urls.count > 0) {
+          return {
+            success: {
+              key: 'url_deleted'
+            }
           }
-        }
-      } else if (visits.count > 0) {
-        return {
-          success: {
-            key: 'statistics_deleted'
+        } else if (visits.count > 0) {
+          return {
+            success: {
+              key: 'statistics_deleted'
+            }
+          }
+        } else {
+          return {
+            error: {
+              key: 'data_not_deleted'
+            }
           }
         }
       } else {
         return {
           error: {
-            key: 'data_not_deleted'
+            key: 'url_ban'
           }
         }
       }

@@ -72,7 +72,7 @@ const SlugPage = ({ serverSide }) => {
                 {settings.redirects.timer.redirectButton && countdown <= 0 ? (
                   <button
                     type="button"
-                    className="timer-redirect"
+                    className="timer-redirect-button"
                     onClick={() => {
                       router.push(serverSide.data.long)
                     }}

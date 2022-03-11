@@ -25,6 +25,7 @@ model Urls {
   redirect      String   @db.VarChar(255)
   hash          String   @db.VarChar(32)
   delete        String   @db.VarChar(32)
+  ban           Boolean  @default(false)
   ip            Int
   createdAt     DateTime @default(now()) @db.Timestamp(0)
   updatedAt     DateTime @updatedAt

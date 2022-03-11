@@ -64,7 +64,7 @@ const URLsAPI = async (req, res) => {
           } else {
             res.status(200).json({
               error: {
-                key: 'url_ban'
+                key: 'service_ban'
               }
             })
           }
