@@ -1,17 +1,6 @@
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  RedditShareButton,
-  RedditIcon,
-  TelegramShareButton,
-  TelegramIcon,
-  TwitterShareButton,
-  TwitterIcon,
-  WhatsappShareButton,
-  WhatsappIcon
-} from 'next-share'
 import { settings } from '../../data/settings'
 import QRCode from 'qrcode.react'
+import Share from '../Share'
 
 const Subheader = ({ data }) => {
   return (
@@ -19,27 +8,25 @@ const Subheader = ({ data }) => {
       <div className="subheader-details">
         <div className="subheader-short">{`${data.service}/${data.slug}`}</div>
         <div className="subheader-date">{data.format.createdAt}</div>
-        <div className="share-button-group">
-          <FacebookShareButton url={data.short}>
-            <FacebookIcon size={32} className="rounded" />
-          </FacebookShareButton>
-
-          <TwitterShareButton url={data.short}>
-            <TwitterIcon size={32} className="rounded" />
-          </TwitterShareButton>
-
-          <RedditShareButton url={data.short}>
-            <RedditIcon size={32} className="rounded" />
-          </RedditShareButton>
-
-          <TelegramShareButton url={data.short}>
-            <TelegramIcon size={32} className="rounded" />
-          </TelegramShareButton>
-
-          <WhatsappShareButton url={data.short}>
-            <WhatsappIcon size={32} className="rounded" />
-          </WhatsappShareButton>
-        </div>
+        <Share
+          data={{
+            facebook: {
+              url: data.short
+            },
+            twitter: {
+              url: data.short
+            },
+            reddit: {
+              url: data.short
+            },
+            telegram: {
+              url: data.short
+            },
+            whatsapp: {
+              url: data.short
+            }
+          }}
+        />
       </div>
       <div className="subheader-qrcode">
         <QRCode
