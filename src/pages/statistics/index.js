@@ -28,7 +28,7 @@ const StatisticsPage = () => {
           description: t('all:og-description'),
           site_name: t('all:site-title')
         }}
-        noindex={settings.noindex.statistics}
+        noindex={settings.noindex.statistics.index}
       />
       <div className="main">
         {!error ? (

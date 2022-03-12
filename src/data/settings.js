@@ -64,12 +64,18 @@ export const settings = {
     }
   },
   noindex: {
-    home: false,
-    slug: true,
-    statistics: false,
-    statisticsSlug: true,
-    delete: false,
-    deleteHash: true
+    home: {
+      index: false,
+      slug: true
+    },
+    statistics: {
+      index: false,
+      slug: true
+    },
+    delete: {
+      index: false,
+      hash: true
+    }
   },
   redirects: {
     default: ['direct', 'timer'],

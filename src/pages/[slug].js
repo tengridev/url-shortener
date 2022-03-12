@@ -59,7 +59,7 @@ const SlugPage = ({ serverSide }) => {
           description: t('all:og-description'),
           site_name: t('all:site-title')
         }}
-        noindex={settings.noindex.slug}
+        noindex={settings.noindex.home.slug}
       />
 
       {!serverSide.error ? (

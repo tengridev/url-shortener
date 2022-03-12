@@ -157,7 +157,7 @@ const HomePage = () => {
 
   return (
     <>
-      <NextSeo noindex={settings.noindex.home} />
+      <NextSeo noindex={settings.noindex.home.index} />
       <div className="main">
         <div className="shortener">
           <form onSubmit={shortenURL}>
