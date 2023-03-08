@@ -1,23 +1,22 @@
 {
-  "name": "url-shortener-app",
+  "name": "url-shortener",
   "version": "1.0.0",
-  "description": "Next.JS ile hazırlanmış basit, sade ve kullanışlı URL kısaltma uygulaması",
-  "author": "RegEx Art <regexart@gmail.com>",
+  "description": "Next.JS, MySQL ve TailwindCSS ile hazırlanmış basit ve hızlı URL kısaltma servisi.",
+  "author": "Tengri.dev <kok@tengri.dev>",
   "license": "MIT",
   "private": true,
   "keywords": [
     "next.js",
     "url",
-    "shortener",
-    "app"
+    "shortener"
   ],
-  "homepage": "https://github.com/regexart/url-shortener-app#readme",
+  "homepage": "https://github.com/tengridev/url-shortener#readme",
   "bugs": {
-    "url": "https://github.com/regexart/url-shortener-app/issues"
+    "url": "https://github.com/tengridev/url-shortener/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/regexart/url-shortener-app.git"
+    "url": "git+https://github.com/tengridev/url-shortener.git"
   },
   "scripts": {
     "dev": "next dev",

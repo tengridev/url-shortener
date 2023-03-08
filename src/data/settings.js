@@ -45,10 +45,10 @@ export const settings = {
   autoBan: {
     active: true,
     limit: {
-      url: 45,
-      visit: 60
+      url: 30,
+      visit: 45
     },
-    whitelist: ['::1', '127.0.0.1']
+    whitelist: ['::1', '127.0.0.1', '167.235.31.55']
   },
   searchEngines: {
     google: {
@@ -66,7 +66,7 @@ export const settings = {
   noindex: {
     home: {
       index: false,
-      slug: true
+      slug: false
     },
     statistics: {
       index: false,
@@ -80,17 +80,37 @@ export const settings = {
   redirects: {
     default: ['direct', 'timer'],
     timer: {
-      countdown: 15,
+      countdown: 5,
       redirectButton: true
     }
   },
   services: {
-    default: ['urlshortener.app'],
-    disallow: ['urlshortener.app']
+    default: ['to.tv.tr'],
+    disallow: ['to.tv.tr']
   },
   slugs: {
-    length: 4,
-    disallow: ['404', '500', 'api', 'static', 'sitemap', 'delete', 'statistics']
+    length: 3,
+    disallow: [
+      '404',
+      '500',
+      'api',
+      'static',
+      'sitemap',
+      'delete',
+      'statistics',
+      'login',
+      'register',
+      'admin',
+      'administrator',
+      'moderator',
+      'giris',
+      'kayit',
+      'cikis',
+      'logout',
+      'public',
+      'index',
+      'error'
+    ]
   },
   latestShortened: {
     active: true,

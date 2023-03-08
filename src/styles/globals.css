@@ -30,7 +30,7 @@ body {
     }
 
     &-theme {
-      @apply flex justify-center items-center p-[0.375rem] rounded-full border border-neutral-200 bg-neutral-200/25 dark:border-zinc-800 dark:bg-zinc-800/25;
+      @apply w-7 h-7 flex justify-center items-center p-[0.375rem] rounded-full border border-neutral-200 bg-neutral-200/25 dark:border-zinc-800 dark:bg-zinc-800/25;
     }
 
     .navbar-nav {

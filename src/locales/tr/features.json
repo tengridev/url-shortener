@@ -1,18 +1,18 @@
 {
   "selectable": {
-    "title": "Seçilebilir servisler",
+    "title": "Seçilebilir Servisler",
     "text": "Birden fazla servis sağlayıcısı sayesinde istediğiniz kısa bağlantıya sahip olabilirsiniz."
   },
   "custom": {
-    "title": "Özel URL adresleri",
+    "title": "Özel URL Adresleri",
     "text": "Özel URL adresi tanımlayabilir ve bu adresler ile daha kolay bilinirlik sağlayabilirsiniz."
   },
   "statistics": {
-    "title": "Detaylı istatistikler",
+    "title": "Detaylı İstatistikler",
     "text": "Detaylı istatistikler sayesinde gün, hafta, ay, yıl ve tüm zamanların istatistiklerini görüntüleyebilirsiniz."
   },
   "free": {
-    "title": "Tamamen ücretsiz",
+    "title": "Tamamen Ücretsiz",
     "text": "Tüm servis sağlayıcılarımıza hiçbir ücret ödemeden anında erişim sağlayabilirsiniz."
   }
 }

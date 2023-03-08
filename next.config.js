@@ -1,7 +1,14 @@
 /** @type {import('next').NextConfig} */
 const { parsed: localEnv } = require('dotenv').config()
 const nextTranslate = require('next-translate')
-const withPWA = require('next-pwa')
+const runtimeCaching = require('next-pwa/cache')
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  disable: process.env.NODE_ENV === 'development',
+  register: true,
+  sw: 'service-worker.js',
+  runtimeCaching
+})
 
 const nextConfig = {
   async redirects() {
@@ -12,12 +19,6 @@ const nextConfig = {
         permanent: true
       }
     ]
-  },
-  pwa: {
-    dest: 'public',
-    disable: process.env.NODE_ENV === 'development',
-    register: true,
-    sw: 'service-worker.js'
   },
   publicRuntimeConfig: {
     SITE_URL: process.env.SITE_URL

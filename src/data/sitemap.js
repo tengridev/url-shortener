@@ -1,7 +1,7 @@
 export const sitemap = {
   active: {
     page: true,
-    short: false,
+    short: true,
     statistics: false
   },
   limit: 10000,
@@ -9,7 +9,7 @@ export const sitemap = {
     index: [
       {
         loc: '/sitemap/page-sitemap/1',
-        lastmod: '06.03.2022 11:06:48'
+        lastmod: '08.03.2023 07:06:55'
       }
     ],
     page: [
@@ -18,11 +18,11 @@ export const sitemap = {
       },
       {
         loc: '/statistics',
-        lastmod: '06.03.2022 11:06:48'
+        lastmod: '08.03.2023 11:06:48'
       },
       {
         loc: '/delete',
-        lastmod: '06.03.2022 11:06:48'
+        lastmod: '08.03.2023 11:07:06'
       }
     ]
   }

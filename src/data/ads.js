@@ -13,16 +13,31 @@ export const ads = {
       {
         order: 3,
         short: {
-          href: 'https://urlshortener.app/whois',
+          href: 'https://to.tv.tr/whois',
           title: 'WHOIS',
           rel: 'nofollow',
-          text: 'https://urlshortener.app/whois'
+          text: 'https://to.tv.tr/whois'
         },
         long: {
           href: 'https://whois.tv.tr',
           title: 'Whois Sorgulama',
           rel: 'nofollow',
           text: 'https://whois.tv.tr'
+        }
+      },
+      {
+        order: 5,
+        short: {
+          href: 'https://to.tv.tr/metin2',
+          title: 'Metin2 Forum',
+          rel: 'nofollow',
+          text: 'https://to.tv.tr/metin2'
+        },
+        long: {
+          href: 'https://metin2.org.tr',
+          title: 'Metin2 Forum',
+          rel: 'nofollow',
+          text: 'https://metin2.org.tr'
         }
       }
     ]

@@ -1,9 +1,9 @@
 export const manifest = {
   tr: {
-    name: 'URL Kısaltıcı',
-    short_name: 'URL Kısaltıcı',
+    name: 'TO.TV.TR',
+    short_name: 'TO.TV.TR',
     description:
-      'URL kısaltıcı, sahip olduğunuz uzun linkleri ücretsiz bir şekilde daha kısa ve akılda kalıcı linkler haline getirmenizi sağlar. Link kısaltma sonrası istatistikleri görüntüleyebilirsiniz.',
+      'TO.TV.TR, sahip olduğunuz uzun bağlantıları ücretsiz bir şekilde daha kısa ve akılda kalıcı bağlantılar haline getirmenizi sağlar, detaylı ve anlık istatistikler sunar.',
     scope: '/',
     start_url: '/?utm_source=PWA',
     display: 'standalone',

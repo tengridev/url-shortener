@@ -1,13 +1,13 @@
 # URL Shortener
 
-Next.JS ile hazırlanmış basit ve hızlı URL kısaltma servisi.
+Next.JS, MySQL ve TailwindCSS ile hazırlanmış basit ve hızlı URL kısaltma servisi.
 
 ## Ekran Görüntüsü
 
-- **[Tüm ekran görüntüleri](https://github.com/regexart/url-shortener-app/tree/main/public/static/screenshot)**
+- **[Tüm ekran görüntüleri](https://github.com/tengridev/url-shortener/tree/main/public/static/screenshot)**
 
 <p align="center">
-  <img src="https://github.com/regexart/url-shortener-app/raw/main/public/static/screenshot/index.png" alt="URL Shortener">
+  <img src="https://github.com/tengridev/url-shortener/raw/main/public/static/screenshot/index.png" alt="URL Shortener">
 </p>
 
 ## Düzenleme
