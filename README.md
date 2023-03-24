@@ -95,5 +95,5 @@ $ yarn build
 #### Başlat
 
 ```bash
-$ pm2 start yarn --interpreter bash --name urlshortener -- start
+$ pm2 start yarn --max-memory-restart 256M --exp-backoff-restart-delay=100 --interpreter bash --name totvtr -- start
 ```

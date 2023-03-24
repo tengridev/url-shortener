@@ -28,6 +28,11 @@ const nextConfig = {
       ? process.env.API_URL
       : localEnv && localEnv.API_URL
   },
+  serverRuntimeConfig: {
+    SECRET_KEY: process.env.SECRET_KEY
+      ? process.env.SECRET_KEY
+      : localEnv && localEnv.SECRET_KEY
+  },
   ...nextTranslate()
 }
 

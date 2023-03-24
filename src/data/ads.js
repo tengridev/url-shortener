@@ -16,7 +16,7 @@ export const ads = {
           href: 'https://to.tv.tr/whois',
           title: 'WHOIS',
           rel: 'nofollow',
-          text: 'https://to.tv.tr/whois'
+          text: 'to.tv.tr/whois'
         },
         long: {
           href: 'https://whois.tv.tr',
@@ -31,7 +31,7 @@ export const ads = {
           href: 'https://to.tv.tr/metin2',
           title: 'Metin2 Forum',
           rel: 'nofollow',
-          text: 'https://to.tv.tr/metin2'
+          text: 'to.tv.tr/metin2'
         },
         long: {
           href: 'https://metin2.org.tr',
