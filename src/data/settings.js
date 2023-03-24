@@ -1,6 +1,6 @@
 import getConfig from 'next/config'
 
-const { publicRuntimeConfig } = getConfig()
+const { publicRuntimeConfig, serverRuntimeConfig } = getConfig()
 
 export const settings = {
   main: {
@@ -118,7 +118,7 @@ export const settings = {
   },
   localStorage: {
     encrypt: true,
-    secret: '4825c24387d1b9a891401a6c93e4b4e8',
+    secret: serverRuntimeConfig.SECRET_KEY,
     ttl: 60 * 60 * 24 * 365
   },
   swr: {
@@ -136,6 +136,6 @@ export const settings = {
     level: 'H'
   },
   keys: {
-    signature: '4825c24387d1b9a891401a6c93e4b4e8'
+    signature: serverRuntimeConfig.SECRET_KEY
   }
 }
