@@ -103,7 +103,9 @@ const Shortened = ({ title, data, advertising }) => {
                         : item.short
                     }
                   >
-                    <a>{item.short}</a>
+                    <a>
+                      {item.service}/{item.slug}
+                    </a>
                   </Link>
                 </p>
 
@@ -143,7 +145,7 @@ const Shortened = ({ title, data, advertising }) => {
                 <CopyToClipboard
                   text={item.short}
                   onCopy={() => {
-                    setCopied(item.slug)
+                    setCopied(item.short)
 
                     setTimeout(() => {
                       setCopied(false)
@@ -152,9 +154,9 @@ const Shortened = ({ title, data, advertising }) => {
                 >
                   <button type="button" className="shortened-button">
                     <FontAwesomeIcon
-                      icon={copied && copied === item.slug ? faCheck : faCopy}
+                      icon={copied && copied === item.short ? faCheck : faCopy}
                       className={`w-4 h-4 ${
-                        copied && copied === item.slug ? 'animate-pulse' : ''
+                        copied && copied === item.short ? 'animate-pulse' : ''
                       }`}
                     />
                   </button>
