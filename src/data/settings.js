@@ -118,7 +118,7 @@ export const settings = {
   },
   localStorage: {
     encrypt: true,
-    secret: serverRuntimeConfig.SECRET_KEY,
+    secret: '3bd7c5ce401fa1ead0427101d9506002',
     ttl: 60 * 60 * 24 * 365
   },
   swr: {
