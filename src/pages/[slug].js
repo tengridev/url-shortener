@@ -3,6 +3,8 @@ import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo'
 import { regex } from '../utils/regex'
 import { settings } from '../data/settings'
+import { ads } from '../data/ads'
+import Link from 'next/link'
 import Subheader from '../components/Subheader'
 import Alert from '../components/Alert'
 import md5 from 'crypto-js/md5'
@@ -66,9 +68,77 @@ const SlugPage = ({ serverSide }) => {
         <>
           <Subheader data={serverSide.data} />
 
+          {ads.timer.active &&
+            (ads.timer.data.top.desktop.src ||
+              ads.timer.data.top.mobile.src) && (
+              <div className="mt-20 grid grid-cols-12">
+                <div className="col-start-2 col-span-10 flex justify-center items-center">
+                  {ads.timer.data.top.desktop.src && (
+                    <Link href={ads.timer.data.top.desktop.href}>
+                      <a
+                        title={ads.timer.data.top.desktop.title}
+                        rel={ads.timer.data.top.desktop.rel}
+                        className="hidden sm:block"
+                      >
+                        <img
+                          src={ads.timer.data.top.desktop.src}
+                          alt={ads.timer.data.top.desktop.title}
+                          width="100%"
+                          height="100%"
+                        />
+                      </a>
+                    </Link>
+                  )}
+
+                  {ads.timer.data.top.mobile.src && (
+                    <Link href={ads.timer.data.top.mobile.href}>
+                      <a
+                        title={ads.timer.data.top.mobile.title}
+                        rel={ads.timer.data.top.mobile.rel}
+                        className="block sm:hidden"
+                      >
+                        <img
+                          src={ads.timer.data.top.mobile.src}
+                          alt={ads.timer.data.top.mobile.title}
+                          width="100%"
+                          height="100%"
+                        />
+                      </a>
+                    </Link>
+                  )}
+                </div>
+              </div>
+            )}
+
           <div className="main">
-            <div className="timer">
-              <div className="timer-text">
+            <div
+              className={
+                ads.timer.active &&
+                (ads.timer.data.left.desktop.src ||
+                  ads.timer.data.right.desktop.src)
+                  ? `timer justify-center md:justify-between md:gap-x-10`
+                  : `timer justify-center`
+              }
+            >
+              {ads.timer.active && ads.timer.data.left.desktop.src && (
+                <div className="hidden md:flex justify-center items-center">
+                  <Link href={ads.timer.data.left.desktop.href}>
+                    <a
+                      title={ads.timer.data.left.desktop.title}
+                      rel={ads.timer.data.left.desktop.rel}
+                    >
+                      <img
+                        src={ads.timer.data.left.desktop.src}
+                        alt={ads.timer.data.left.desktop.title}
+                        width="100%"
+                        height="100%"
+                      />
+                    </a>
+                  </Link>
+                </div>
+              )}
+
+              <div className="timer-text flex justify-center items-center">
                 {settings.redirects.timer.redirectButton && countdown <= 0 ? (
                   <button
                     type="button"
@@ -83,8 +153,68 @@ const SlugPage = ({ serverSide }) => {
                   countdown
                 )}
               </div>
+
+              {ads.timer.active && ads.timer.data.right.desktop.src && (
+                <div className="hidden md:flex justify-center items-center">
+                  <Link href={ads.timer.data.right.desktop.href}>
+                    <a
+                      title={ads.timer.data.right.desktop.title}
+                      rel={ads.timer.data.right.desktop.rel}
+                    >
+                      <img
+                        src={ads.timer.data.right.desktop.src}
+                        alt={ads.timer.data.right.desktop.title}
+                        width="100%"
+                        height="100%"
+                      />
+                    </a>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
+
+          {ads.timer.active &&
+            (ads.timer.data.bottom.desktop.src ||
+              ads.timer.data.bottom.mobile.src) && (
+              <div className="mb-20 grid grid-cols-12">
+                <div className="col-start-2 col-span-10 flex justify-center items-center">
+                  {ads.timer.data.bottom.desktop.src && (
+                    <Link href={ads.timer.data.bottom.desktop.href}>
+                      <a
+                        title={ads.timer.data.bottom.desktop.title}
+                        rel={ads.timer.data.bottom.desktop.rel}
+                        className="hidden sm:block"
+                      >
+                        <img
+                          src={ads.timer.data.bottom.desktop.src}
+                          alt={ads.timer.data.bottom.desktop.title}
+                          width="100%"
+                          height="100%"
+                        />
+                      </a>
+                    </Link>
+                  )}
+
+                  {ads.timer.data.bottom.mobile.src && (
+                    <Link href={ads.timer.data.bottom.mobile.href}>
+                      <a
+                        title={ads.timer.data.bottom.mobile.title}
+                        rel={ads.timer.data.bottom.mobile.rel}
+                        className="block sm:hidden"
+                      >
+                        <img
+                          src={ads.timer.data.bottom.mobile.src}
+                          alt={ads.timer.data.bottom.mobile.title}
+                          width="100%"
+                          height="100%"
+                        />
+                      </a>
+                    </Link>
+                  )}
+                </div>
+              </div>
+            )}
         </>
       ) : (
         <div className="main">

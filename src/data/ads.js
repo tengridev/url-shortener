@@ -41,5 +41,87 @@ export const ads = {
         }
       }
     ]
+  },
+  timer: {
+    active: false,
+    data: {
+      top: {
+        desktop: {
+          href: '',
+          title: '',
+          rel: '',
+          src: ''
+        },
+        mobile: {
+          href: '',
+          title: '',
+          rel: '',
+          src: ''
+        }
+      },
+      bottom: {
+        desktop: {
+          href: '',
+          title: '',
+          rel: '',
+          src: ''
+        },
+        mobile: {
+          href: '',
+          title: '',
+          rel: '',
+          src: ''
+        }
+      },
+      right: {
+        desktop: {
+          href: '',
+          title: '',
+          rel: '',
+          src: ''
+        }
+      },
+      left: {
+        desktop: {
+          href: '',
+          title: '',
+          rel: '',
+          src: ''
+        }
+      }
+    }
+  },
+  layout: {
+    active: false,
+    data: {
+      header: {
+        desktop: {
+          href: '',
+          title: '',
+          rel: '',
+          src: ''
+        },
+        mobile: {
+          href: '',
+          title: '',
+          rel: '',
+          src: ''
+        }
+      },
+      footer: {
+        desktop: {
+          href: '',
+          title: '',
+          rel: '',
+          src: ''
+        },
+        mobile: {
+          href: '',
+          title: '',
+          rel: '',
+          src: ''
+        }
+      }
+    }
   }
 }
