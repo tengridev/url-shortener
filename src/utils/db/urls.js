@@ -2,6 +2,7 @@ import { settings } from '../../data/settings'
 import { PrismaClient } from '@prisma/client'
 import md5 from 'crypto-js/md5'
 import moment from 'moment'
+import { v4 } from 'uuid'
 
 const prisma = new PrismaClient()
 
@@ -82,7 +83,7 @@ export const URLs = class {
     const keys = {
       hash: md5(`${settings.keys.signature}:${service}:${slug}`).toString(),
       delete: md5(
-        `${settings.keys.signature}:${service}:${slug}:${new Date().getTime()}`
+        `${settings.keys.signature}:${service}:${slug}:${v4()}`
       ).toString()
     }
 

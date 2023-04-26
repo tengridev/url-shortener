@@ -40,6 +40,11 @@ export const settings = {
         /* Data: {service: value, page: value} */
         return `${publicRuntimeConfig.API_URL}/sitemap/${data.service}/${data.page}`
       }
+    },
+    ip: {
+      get: () => {
+        return `${publicRuntimeConfig.API_URL}/ip`
+      }
     }
   },
   autoBan: {
