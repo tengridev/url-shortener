@@ -8,21 +8,11 @@ const prisma = new PrismaClient()
 
 export const IP = class {
   constructor(req) {
-    axios
-      .get(settings.api.ip.get())
-      .then((res) => {
-        this.ipAddress = res.data.ipAddress
-        this.userAgent = res.data.userAgent
-      })
-      .catch(() => {
-        const clientIp = requestIp.getClientIp(req)
+    const clientIp = requestIp.getClientIp(req)
 
-        this.ipAddress =
-          clientIp?.substring(0, 7) === '::ffff:'
-            ? clientIp.substring(7)
-            : clientIp
-        this.userAgent = req?.headers['user-agent'] || navigator.userAgent
-      })
+    this.ipAddress =
+      clientIp?.substring(0, 7) === '::ffff:' ? clientIp.substring(7) : clientIp
+    this.userAgent = req?.headers['user-agent'] || navigator.userAgent
   }
 
   async ip() {
