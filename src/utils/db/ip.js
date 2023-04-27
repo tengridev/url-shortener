@@ -2,7 +2,6 @@ import { settings } from '../../data/settings'
 import { PrismaClient } from '@prisma/client'
 import requestIp from 'request-ip'
 import moment from 'moment'
-import axios from 'axios'
 
 const prisma = new PrismaClient()
 
