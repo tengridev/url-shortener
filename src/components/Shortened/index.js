@@ -33,7 +33,7 @@ const Shortened = ({ title, data, advertising }) => {
                 </Link>
               </p>
 
-              <p className="shortened-long">
+              <p className="shortened-long whitespace-nowrap overflow-hidden text-ellipsis">
                 <Link href={find.long.href}>
                   <a title={find.long.title} rel={find.long.rel}>
                     {find.long.text}
@@ -109,7 +109,7 @@ const Shortened = ({ title, data, advertising }) => {
                   </Link>
                 </p>
 
-                <p className="shortened-long">
+                <p className="shortened-long whitespace-nowrap overflow-hidden text-ellipsis">
                   <Link href={item.long}>
                     <a rel="nofollow">{item.long}</a>
                   </Link>
