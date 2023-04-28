@@ -53,7 +53,7 @@ export const settings = {
       url: 30,
       visit: 45
     },
-    whitelist: ['::1', '127.0.0.1', '167.235.31.55']
+    whitelist: ['::1', '127.0.0.1']
   },
   searchEngines: {
     google: {
@@ -85,7 +85,7 @@ export const settings = {
   redirects: {
     default: ['direct', 'timer'],
     timer: {
-      countdown: 5,
+      countdown: 10,
       redirectButton: true
     }
   },
@@ -114,7 +114,11 @@ export const settings = {
       'logout',
       'public',
       'index',
-      'error'
+      'error',
+      'tr',
+      'en',
+      'settings',
+      'config'
     ]
   },
   latestShortened: {

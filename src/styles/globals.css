@@ -257,7 +257,7 @@ body {
   }
 
   .timer {
-    @apply w-60 h-60 col-start-2 col-span-10 flex items-center;
+    @apply h-60 col-start-2 col-span-10 flex items-center;
 
     &-text {
       @apply w-60 h-60 text-9xl font-extrabold rounded-full border border-neutral-200 bg-neutral-200/25 dark:border-zinc-800 dark:bg-zinc-800/25;

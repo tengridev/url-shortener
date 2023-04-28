@@ -5,7 +5,7 @@ export const manifest = {
     description:
       'TO.TV.TR, sahip olduğunuz uzun bağlantıları ücretsiz bir şekilde daha kısa ve akılda kalıcı bağlantılar haline getirmenizi sağlar, detaylı ve anlık istatistikler sunar.',
     scope: '/',
-    start_url: '/?utm_source=PWA',
+    start_url: '/?utm_source=PWA&utm_medium=APP&utm_campaign=PWA',
     display: 'standalone',
     orientation: 'portrait',
     theme_color: '#18181b',
